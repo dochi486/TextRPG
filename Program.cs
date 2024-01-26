@@ -92,12 +92,17 @@ switch (action)
                 case "1":
                     {
                         player.Attack(slime);
+                        if (player.hp < 0)
+                            Console.WriteLine("플레이어 사망");
                         slime.Attack(player);
+                        if (slime.hp < 0)
+                            Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
                     }
                     break;
                 case "2":
                     {
                         Console.WriteLine("당신은 사냥터에서 도망쳐서 영원히 패배자로 낙인이 찍혔습니다.");
+                        Console.WriteLine("The End");
                     }
                     break;
             }
@@ -136,11 +141,6 @@ namespace TextRPG
     public class Slime : Monster
     {
 
-
-        void Attack()
-        {
-            base.Attack(player: new Player());
-        }
     }
 
     public class Goblin : Monster
