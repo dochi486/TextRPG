@@ -92,10 +92,10 @@ switch (action)
                 case "1":
                     {
                         player.Attack(slime);
-                        if (player.hp < 0)
+                        if (player.hp <= 0)
                             Console.WriteLine("플레이어 사망");
                         slime.Attack(player);
-                        if (slime.hp < 0)
+                        if (slime.hp <= 0)
                             Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
                     }
                     break;
