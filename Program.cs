@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
+using System.Drawing;
 using System.Threading;
 using TextRPG;
 
@@ -149,8 +150,15 @@ switch(secondAction)
                         {
                             player.Attack(orc);
                             if(orc.hp <= 0)
+                            {
                                 Console.WriteLine($"{nameof(orc)}을 처치하고 경험치를 얻었습니다.");
+                                player.hp += 10;
+                                Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
 
+                                Console.WriteLine("오크를 처치했습니다. 무엇을 하시겠습니까?");
+                                Console.WriteLine("1. 사냥하기");
+                                Console.WriteLine("2. 쉬기");
+                            }
                             orc.Attack(player);
                             if(player.hp <= 0)
                             {
@@ -207,8 +215,13 @@ switch(thirdAction)
                         {
                             player.Attack(goblin);
                             if(goblin.hp <= 0)
+                            {
                                 Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
+                                player.hp += 10;
+                                Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
 
+                                Console.WriteLine("고블린을 처치했습니다. 여행이 끝났습니다.");
+                            }
                             goblin.Attack(player);
                             if(player.hp <= 0)
                             {
