@@ -95,6 +95,7 @@ switch (action)
                                 Console.WriteLine("슬라임을 처치했습니다. 무엇을 하시겠습니까?");
                                 Console.WriteLine("1. 사냥하기");
                                 Console.WriteLine("2. 쉬기");
+                                break;
                             }
 
                             slime.Attack(player);
@@ -158,6 +159,7 @@ switch(secondAction)
                                 Console.WriteLine("오크를 처치했습니다. 무엇을 하시겠습니까?");
                                 Console.WriteLine("1. 사냥하기");
                                 Console.WriteLine("2. 쉬기");
+                                break;
                             }
                             orc.Attack(player);
                             if(player.hp <= 0)
@@ -221,6 +223,7 @@ switch(thirdAction)
                                 Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
 
                                 Console.WriteLine("고블린을 처치했습니다. 여행이 끝났습니다.");
+                                break;
                             }
                             goblin.Attack(player);
                             if(player.hp <= 0)
