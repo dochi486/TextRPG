@@ -109,7 +109,7 @@ switch (action)
                     }
                     break;
             }
-        }
+        } 
         break;
     case "2":
         {
@@ -178,6 +178,63 @@ switch(secondAction)
         break;
 }
 
+
+var thirdAction = Console.ReadLine();
+
+switch(thirdAction)
+{
+    case "1":
+        {
+            Console.WriteLine("사냥하기");
+
+            Monster goblin = new Goblin();
+            Random random = new Random();
+            goblin.hp = random.Next(0, 10);
+            Console.WriteLine($"몬스터 {nameof(goblin)}가 나타났습니다!");
+            Console.WriteLine($"{nameof(goblin)}의 체력은 {goblin.hp}입니다.");
+
+            Console.WriteLine("무엇을 하시겠습니까?");
+            Console.WriteLine("1.공격하기");
+            Console.WriteLine("2.도망가기");
+
+            var playerAction = Console.ReadLine();
+
+            switch(playerAction)
+            {
+                case "1":
+                    {
+                        while(goblin.hp > 0)
+                        {
+                            player.Attack(goblin);
+                            if(goblin.hp <= 0)
+                                Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
+
+                            goblin.Attack(player);
+                            if(player.hp <= 0)
+                            {
+                                Console.WriteLine("플레이어 사망");
+                                Console.WriteLine("The End");
+                            }
+                        }
+                    }
+                    break;
+                case "2":
+                    {
+                        Console.WriteLine("당신은 사냥터에서 도망쳐서 영원히 패배자로 낙인이 찍혔습니다.");
+                        Console.WriteLine("The End");
+                    }
+                    break;
+            }
+        }
+        break;
+    case "2":
+        {
+            Console.WriteLine("쉬기");
+            Console.WriteLine("당신은 영원히 잠들었습니다.");
+            Console.WriteLine("The End");
+        }
+        break;
+}
 
 namespace TextRPG
 {
