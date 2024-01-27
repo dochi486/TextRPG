@@ -58,15 +58,6 @@ Console.WriteLine("무엇을 하시겠습니까?");
 Console.WriteLine("1. 사냥하기");
 Console.WriteLine("2. 쉬기"); ;
 
-bool isModeSelected = false;
-
-
-// 사냥터 모드 선택
-while (isModeSelected)
-{
-
-}
-
 var action = Console.ReadLine();
 
 switch (action)
@@ -91,12 +82,24 @@ switch (action)
             {
                 case "1":
                     {
-                        player.Attack(slime);
-                        if (player.hp <= 0)
-                            Console.WriteLine("플레이어 사망");
-                        slime.Attack(player);
-                        if (slime.hp <= 0)
-                            Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
+                        while(slime.hp > 0)
+                        {
+                            player.Attack(slime);
+                            if(slime.hp <= 0)
+                            {
+                                Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
+                                player.hp += 10;
+                                Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
+
+                                Console.WriteLine("슬라임을 처치했습니다. 무엇을 하시겠습니까?");
+                                Console.WriteLine("1. 사냥하기");
+                                Console.WriteLine("2. 쉬기");
+                            }
+
+                            slime.Attack(player);
+                            if(player.hp <= 0)
+                                Console.WriteLine("플레이어 사망");
+                        }
                     }
                     break;
                 case "2":
@@ -111,11 +114,70 @@ switch (action)
     case "2":
         {
             Console.WriteLine("쉬기");
-
-
+            Console.WriteLine("당신은 영원히 잠들었습니다.");
+            Console.WriteLine("The End");
         }
         break;
 }
+
+
+var secondAction = Console.ReadLine();
+
+switch(secondAction)
+{
+    case "1":
+        {
+            Console.WriteLine("사냥하기");
+
+            Monster orc = new Orc();
+            Random random = new Random();
+            orc.hp = random.Next(0, 10);
+            Console.WriteLine($"몬스터 {nameof(orc)}가 나타났습니다!");
+            Console.WriteLine($"{nameof(orc)}의 체력은 {orc.hp}입니다.");
+
+            Console.WriteLine("무엇을 하시겠습니까?");
+            Console.WriteLine("1.공격하기");
+            Console.WriteLine("2.도망가기");
+
+            var playerAction = Console.ReadLine();
+
+            switch(playerAction)
+            {
+                case "1":
+                    {
+                        while(orc.hp > 0)
+                        {
+                            player.Attack(orc);
+                            if(orc.hp <= 0)
+                                Console.WriteLine($"{nameof(orc)}을 처치하고 경험치를 얻었습니다.");
+
+                            orc.Attack(player);
+                            if(player.hp <= 0)
+                            {
+                                Console.WriteLine("플레이어 사망");
+                                Console.WriteLine("The End");
+                            }
+                        }
+                    }
+                    break;
+                case "2":
+                    {
+                        Console.WriteLine("당신은 사냥터에서 도망쳐서 영원히 패배자로 낙인이 찍혔습니다.");
+                        Console.WriteLine("The End");
+                    }
+                    break;
+            }
+        }
+        break;
+    case "2":
+        {
+            Console.WriteLine("쉬기");
+            Console.WriteLine("당신은 영원히 잠들었습니다.");
+            Console.WriteLine("The End");
+        }
+        break;
+}
+
 
 namespace TextRPG
 {
