@@ -22,8 +22,8 @@ switch (character)
             Console.WriteLine("마법사 선택");
             player = new Wizard();
             Random random = new Random();
-            player.hp = random.Next(0, 10);
-            player.mp = random.Next(0, 10);
+            player.hp = random.Next(1, 10);
+            player.mp = random.Next(1, 10);
             Console.WriteLine($"당신의 체력은 : {player.hp}입니다.");
             Console.WriteLine($"당신의 마력은 : {player.mp}입니다.");
 
@@ -35,8 +35,8 @@ switch (character)
             Console.WriteLine("전사 선택");
             player = new Warrior();
             Random random = new Random();
-            player.hp = random.Next(0, 10);
-            player.mp = random.Next(0, 10);
+            player.hp = random.Next(1, 10);
+            player.mp = random.Next(1, 10);
             Console.WriteLine($"당신의 체력은 : {player.hp}입니다.");
             Console.WriteLine($"당신의 마력은 : {player.mp}입니다.");
         }
@@ -46,8 +46,8 @@ switch (character)
             Console.WriteLine("궁수 선택");
             player = new Archer();
             Random random = new Random();
-            player.hp = random.Next(0, 10);
-            player.mp = random.Next(0, 10);
+            player.hp = random.Next(1, 10);
+            player.mp = random.Next(1, 10);
             Console.WriteLine($"당신의 체력은 : {player.hp}입니다.");
             Console.WriteLine($"당신의 마력은 : {player.mp}입니다.");
         }
@@ -69,7 +69,7 @@ switch (action)
 
             Monster slime = new Slime();
             Random random = new Random();
-            slime.hp = random.Next(0, 10);
+            slime.hp = random.Next(1, 10);
             Console.WriteLine($"몬스터 {nameof(slime)}가 나타났습니다!");
             Console.WriteLine($"{nameof(slime)}의 체력은 {slime.hp}입니다.");
 
@@ -85,6 +85,15 @@ switch (action)
                     {
                         while(slime.hp > 0)
                         {
+
+                            slime.Attack(player);
+                            if(player.hp <= 0)
+                            {
+                                Console.WriteLine("플레이어 사망");
+                                Console.WriteLine("The End");
+                                break;
+                            }
+
                             player.Attack(slime);
                             if(slime.hp <= 0)
                             {
@@ -98,9 +107,7 @@ switch (action)
                                 break;
                             }
 
-                            slime.Attack(player);
-                            if(player.hp <= 0)
-                                Console.WriteLine("플레이어 사망");
+                         
                         }
                     }
                     break;
@@ -133,7 +140,7 @@ switch(secondAction)
 
             Monster orc = new Orc();
             Random random = new Random();
-            orc.hp = random.Next(0, 10);
+            orc.hp = random.Next(1, 10);
             Console.WriteLine($"몬스터 {nameof(orc)}가 나타났습니다!");
             Console.WriteLine($"{nameof(orc)}의 체력은 {orc.hp}입니다.");
 
@@ -149,6 +156,14 @@ switch(secondAction)
                     {
                         while(orc.hp > 0)
                         {
+                            orc.Attack(player);
+                            if(player.hp <= 0)
+                            {
+                                Console.WriteLine("플레이어 사망");
+                                Console.WriteLine("The End");
+                                break;
+                            }
+
                             player.Attack(orc);
                             if(orc.hp <= 0)
                             {
@@ -161,12 +176,7 @@ switch(secondAction)
                                 Console.WriteLine("2. 쉬기");
                                 break;
                             }
-                            orc.Attack(player);
-                            if(player.hp <= 0)
-                            {
-                                Console.WriteLine("플레이어 사망");
-                                Console.WriteLine("The End");
-                            }
+                            
                         }
                     }
                     break;
@@ -199,7 +209,7 @@ switch(thirdAction)
 
             Monster goblin = new Goblin();
             Random random = new Random();
-            goblin.hp = random.Next(0, 10);
+            goblin.hp = random.Next(1, 10);
             Console.WriteLine($"몬스터 {nameof(goblin)}가 나타났습니다!");
             Console.WriteLine($"{nameof(goblin)}의 체력은 {goblin.hp}입니다.");
 
@@ -215,6 +225,14 @@ switch(thirdAction)
                     {
                         while(goblin.hp > 0)
                         {
+                            goblin.Attack(player);
+                            if(player.hp <= 0)
+                            {
+                                Console.WriteLine("플레이어 사망");
+                                Console.WriteLine("The End");
+                                break;
+                            }
+
                             player.Attack(goblin);
                             if(goblin.hp <= 0)
                             {
@@ -225,12 +243,7 @@ switch(thirdAction)
                                 Console.WriteLine("고블린을 처치했습니다. 여행이 끝났습니다.");
                                 break;
                             }
-                            goblin.Attack(player);
-                            if(player.hp <= 0)
-                            {
-                                Console.WriteLine("플레이어 사망");
-                                Console.WriteLine("The End");
-                            }
+                            
                         }
                     }
                     break;
