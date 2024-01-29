@@ -66,10 +66,12 @@ switch (action)
     case "1":
         {
             Console.WriteLine("사냥하기");
-
-            Monster slime = new Slime();
             Random random = new Random();
-            slime.hp = random.Next(1, 10);
+
+            int hp = random.Next(1, 10);
+            int mp = random.Next(1, 10);
+
+            Monster slime = new Slime(hp, mp);
             Console.WriteLine($"몬스터 {nameof(slime)}가 나타났습니다!");
             Console.WriteLine($"{nameof(slime)}의 체력은 {slime.hp}입니다.");
 
@@ -137,10 +139,12 @@ switch(secondAction)
     case "1":
         {
             Console.WriteLine("사냥하기");
-
-            Monster orc = new Orc();
             Random random = new Random();
-            orc.hp = random.Next(1, 10);
+
+            int hp = random.Next(1, 10);
+            int mp = random.Next(1, 10);
+
+            Monster orc = new Orc(hp, mp);
             Console.WriteLine($"몬스터 {nameof(orc)}가 나타났습니다!");
             Console.WriteLine($"{nameof(orc)}의 체력은 {orc.hp}입니다.");
 
@@ -206,10 +210,12 @@ switch(thirdAction)
     case "1":
         {
             Console.WriteLine("사냥하기");
-
-            Monster goblin = new Goblin();
             Random random = new Random();
-            goblin.hp = random.Next(1, 10);
+
+            int hp = random.Next(0, 10);
+            int mp = random.Next(0, 10);
+
+            Monster goblin = new Goblin(hp, mp);
             Console.WriteLine($"몬스터 {nameof(goblin)}가 나타났습니다!");
             Console.WriteLine($"{nameof(goblin)}의 체력은 {goblin.hp}입니다.");
 
@@ -269,6 +275,12 @@ namespace TextRPG
 {
     public class Monster
     {
+
+        public Monster(int hp, int mp)
+        {
+
+        }
+
         public int hp { get; set; }
 
         public void Attack(Player player)
@@ -286,20 +298,11 @@ namespace TextRPG
         }
     }
 
-    public class Slime : Monster
-    {
+    public class Slime(int hp, int mp) : Monster(hp, mp);
 
-    }
+    public class Goblin(int hp, int mp) : Monster(hp, mp);
 
-    public class Goblin : Monster
-    {
-
-    }
-
-    public class Orc : Monster
-    {
-
-    }
+    public class Orc(int hp, int mp) : Monster(hp, mp);
 
 
     public class Player
