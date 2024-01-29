@@ -278,7 +278,7 @@ namespace TextRPG
         public int hp { get; set; } = hp;
         public int mp { get; set; } = mp;
 
-        public void Attack(Player player)
+        public static void Attack(Player player)
         {
             // 상대방의 체력을 깎는다. 
             Random random = new Random();
@@ -302,10 +302,15 @@ namespace TextRPG
 
     public class Player
     {
+        public Player(int hp, int mp)
+        {
+
+        }
+
         public int Hp { get; set; }
         public int Mp { get; set; }
 
-        public void Attack(Monster monster)
+        public static void Attack(Monster monster)
         {
             Random random = new Random();
             var attack = random.Next(0, 5);
@@ -323,16 +328,25 @@ namespace TextRPG
     {
         public int dex;
 
+        public Archer(int hp, int mp) : base(hp, mp)
+        {
+        }
     }
     public class Warrior : Player
     {
         public int str;
 
+        public Warrior(int hp, int mp) : base(hp, mp)
+        {
+        }
     }
     public class Wizard : Player
     {
         public int magic;
 
+        public Wizard(int hp, int mp) : base(hp, mp)
+        {
+        }
     }
 }
 
