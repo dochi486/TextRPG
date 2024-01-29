@@ -273,15 +273,10 @@ switch(thirdAction)
 
 namespace TextRPG
 {
-    public class Monster
+    public class Monster(int hp, int mp)
     {
-
-        public Monster(int hp, int mp)
-        {
-
-        }
-
-        public int hp { get; set; }
+        public int hp { get; set; } = hp;
+        public int mp { get; set; } = mp;
 
         public void Attack(Player player)
         {
