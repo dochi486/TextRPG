@@ -300,15 +300,10 @@ namespace TextRPG
     public class Orc(int hp, int mp) : Monster(hp, mp);
 
 
-    public class Player
+    public class Player(int hp, int mp)
     {
-        public Player(int hp, int mp)
-        {
-
-        }
-
-        public int Hp { get; set; }
-        public int Mp { get; set; }
+        public int Hp { get; set; } = hp;
+        public int Mp { get; set; } = mp;
 
         public static void Attack(Monster monster)
         {
