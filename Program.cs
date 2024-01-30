@@ -83,7 +83,9 @@ switch (action)
                     {
                         while(slime.hp > 0)
                         {
-                            Monster.Attack(player);
+                            var damage = random.Next(0, 10);                            
+                            
+                            slime.Attack(damage);
                             if(player.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
@@ -91,7 +93,9 @@ switch (action)
                                 break;
                             }
 
-                            Player.Attack(slime);
+                            var playerDamage = random.Next(0, 10);
+                            
+                            player.Attack(playerDamage);
                             if(slime.hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
@@ -153,7 +157,9 @@ switch(secondAction)
                     {
                         while(orc.hp > 0)
                         {
-                            Monster.Attack(player);
+                            var orcDamage = random.Next(0, 10);
+                            
+                            orc.Attack(orcDamage);
                             if(player.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
@@ -161,7 +167,9 @@ switch(secondAction)
                                 break;
                             }
 
-                            Player.Attack(orc);
+                            var playerAttack = random.Next(0, 10);
+                            
+                            player.Attack(playerAttack);
                             if(orc.hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(orc)}을 처치하고 경험치를 얻었습니다.");
@@ -224,7 +232,8 @@ switch(thirdAction)
                     {
                         while(goblin.hp > 0)
                         {
-                            Monster.Attack(player);
+                            var damage = random.Next(0, 10);
+                            goblin.Attack(damage);
                             if(player.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
@@ -232,7 +241,8 @@ switch(thirdAction)
                                 break;
                             }
 
-                            Player.Attack(goblin);
+                            var playerDamage = random.Next(0, 10);
+                            player.Attack(playerDamage);
                             if(goblin.hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
@@ -266,18 +276,39 @@ switch(thirdAction)
 
 namespace TextRPG
 {
+    public class BattleObject()
+    {
+        public string? Name { get; set; }
+
+        public struct BattleObjectStat(int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
+        {
+            public int Hp { get; set; } = initHp;
+            public int Mp { get; set; } = initMp;
+            public int Str { get; set; } = initStr;
+            public int Dex { get; set; } = initDex;
+            public int Magic { get; set; } = initMagic;
+            public int Damage { get; set; } = initDamage;
+        }
+
+        public BattleObjectStat Stat;
+
+        public BattleObject(string name, BattleObjectStat stat) : this()
+        {
+            this.Name = name;
+            Stat = stat;
+        }
+
+    }
+    
+    
     public class Monster(int hp, int mp)
     {
         public int hp { get; set; } = hp;
         public int mp { get; set; } = mp;
 
-        public static void Attack(Player player)
+        public void Attack(int damage)
         {
-            // 상대방의 체력을 깎는다. 
-            Random random = new Random();
-            var attack = random.Next(0, 5);
-            player.Hp -= attack;
-            Console.WriteLine($"플레이어에게 {attack}만큼의 대미지를 주었습니다.");
+            hp -= damage;
         }
     }
 
@@ -298,12 +329,9 @@ namespace TextRPG
         public int Hp { get; set; } 
         public int Mp { get; set; }
 
-        public static void Attack(Monster monster)
+        public void Attack(int damage)
         {
-            Random random = new Random();
-            var attack = random.Next(0, 5);
-            monster.hp -= attack;
-            Console.WriteLine($"{nameof(monster)}에게 {attack}만큼의 대미지를 주었습니다.");
+            Hp -= damage;
         }
     }
 
