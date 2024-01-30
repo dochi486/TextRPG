@@ -1,7 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using System;
-using System.Drawing;
-using System.Threading;
+
 using TextRPG;
 
 
@@ -83,9 +81,9 @@ switch (action)
                     {
                         while(slime.hp > 0)
                         {
-                            var damage = random.Next(0, 10);                            
+                            var playerDamage = random.Next(0, 10);
+                            player.Attack(playerDamage);
                             
-                            slime.Attack(damage);
                             if(player.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
@@ -93,9 +91,8 @@ switch (action)
                                 break;
                             }
 
-                            var playerDamage = random.Next(0, 10);
-                            
-                            player.Attack(playerDamage);
+                            var damage = random.Next(0, 10);                            
+                            slime.Attack(damage);
                             if(slime.hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
@@ -157,9 +154,9 @@ switch(secondAction)
                     {
                         while(orc.hp > 0)
                         {
-                            var orcDamage = random.Next(0, 10);
+                            var playerAttack = random.Next(0, 10);
+                            player.Attack(playerAttack);
                             
-                            orc.Attack(orcDamage);
                             if(player.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
@@ -167,9 +164,9 @@ switch(secondAction)
                                 break;
                             }
 
-                            var playerAttack = random.Next(0, 10);
+                            var orcDamage = random.Next(0, 10);
+                            orc.Attack(orcDamage);
                             
-                            player.Attack(playerAttack);
                             if(orc.hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(orc)}을 처치하고 경험치를 얻었습니다.");
@@ -232,8 +229,9 @@ switch(thirdAction)
                     {
                         while(goblin.hp > 0)
                         {
-                            var damage = random.Next(0, 10);
-                            goblin.Attack(damage);
+                            var playerDamage = random.Next(0, 10);
+                            player.Attack(playerDamage);
+                            
                             if(player.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
@@ -241,8 +239,8 @@ switch(thirdAction)
                                 break;
                             }
 
-                            var playerDamage = random.Next(0, 10);
-                            player.Attack(playerDamage);
+                            var damage = random.Next(0, 10);
+                            goblin.Attack(damage);
                             if(goblin.hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
