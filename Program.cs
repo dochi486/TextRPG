@@ -81,8 +81,8 @@ switch (action)
                     {
                         while(slime.MonsterStat.Hp > 0)
                         {
-                            slime.MonsterStat.Damage = random.Next(0, 10);
-                            player.Attack(slime.MonsterStat.Damage);
+                            var damage = slime.GetDamage();
+                            player.Attack(damage);
                             
                             if(player.PlayerStat.Hp <= 0)
                             {
@@ -91,8 +91,8 @@ switch (action)
                                 break;
                             }
 
-                            player.PlayerStat.Damage = random.Next(0, 10);                            
-                            slime.Attack(player.PlayerStat.Damage);
+                            var playerDamage = player.GetDamage();                         
+                            slime.Attack(playerDamage);
                             if(slime.MonsterStat.Hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
@@ -154,8 +154,8 @@ switch(secondAction)
                     {
                         while(orc.MonsterStat.Hp > 0)
                         {
-                            orc.MonsterStat.Damage = random.Next(0, 10);
-                            player.Attack(orc.MonsterStat.Damage);
+                            var damage = orc.GetDamage();
+                            player.Attack(damage);
                             
                             if(player.PlayerStat.Hp <= 0)
                             {
@@ -164,8 +164,8 @@ switch(secondAction)
                                 break;
                             }
 
-                            player.PlayerStat.Damage = random.Next(0, 10);
-                            orc.Attack(player.PlayerStat.Damage);
+                            var playerDamage = player.GetDamage();
+                            orc.Attack(playerDamage);
                             
                             if(orc.MonsterStat.Hp <= 0)
                             {
@@ -229,8 +229,8 @@ switch(thirdAction)
                     {
                         while(goblin.MonsterStat.Hp > 0)
                         {
-                            goblin.MonsterStat.Damage = random.Next(0, 10);
-                            player.Attack(goblin.MonsterStat.Damage);
+                            var damage = goblin.GetDamage();
+                            player.Attack(damage);
                             
                             if(player.PlayerStat.Hp <= 0)
                             {
@@ -239,8 +239,8 @@ switch(thirdAction)
                                 break;
                             }
 
-                            player.PlayerStat.Damage = random.Next(0, 10);
-                            goblin.Attack(player.PlayerStat.Damage);
+                            var playerDamage = player.GetDamage();
+                            goblin.Attack(playerDamage);
                             if(goblin.MonsterStat.Hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
@@ -289,7 +289,8 @@ namespace TextRPG
         }
 
         public BattleObjectStat Stat;
-
+        
+        
         public BattleObject(string name, BattleObjectStat stat) : this()
         {
             this.Name = name;
@@ -302,17 +303,25 @@ namespace TextRPG
             modifiedStat.Hp -= damage;
             Stat = modifiedStat;
         }
+
+        public int GetDamage()
+        { 
+            Random random = new Random();
+            return random.Next(0, Stat.Damage);
+        }
     }
     
     
     public class Monster() : BattleObject
     {
         public BattleObjectStat MonsterStat;
-
+        
         public Monster(int hp, int mp) : this()
         {
             MonsterStat.Hp = hp;
             MonsterStat.Mp = mp;
+            Random random = new Random();
+            MonsterStat.Damage = random.Next();
         }
     }
 
@@ -331,6 +340,8 @@ namespace TextRPG
         {
             PlayerStat.Hp = hp;
             PlayerStat.Mp = mp;
+            Random random = new Random();
+            PlayerStat.Damage = random.Next();
         }
 
     }
