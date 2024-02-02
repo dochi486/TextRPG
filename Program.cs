@@ -16,7 +16,7 @@ Random random = new Random();
 int hp = random.Next(1, 10);
 int mp = random.Next(1, 10);
 
-Player player = new Player(hp, mp);
+Player player = new Player();
 
 switch (character)
 {
@@ -312,36 +312,36 @@ namespace TextRPG
     }
     
     
-    public class Monster() : BattleObject
+    public class Monster : BattleObject
     {
         public BattleObjectStat MonsterStat;
         
-        public Monster(int hp, int mp) : this()
+        public Monster()
         {
-            MonsterStat.Hp = hp;
-            MonsterStat.Mp = mp;
             Random random = new Random();
-            MonsterStat.Damage = random.Next();
+            MonsterStat.Hp = random.Next(1,10);
+            MonsterStat.Mp = random.Next(1,10);
+            MonsterStat.Damage = random.Next(0, 10);
         }
     }
 
-    public class Slime(int hp, int mp) : Monster(hp, mp);
+    public class Slime(int hp, int mp) : Monster();
 
-    public class Goblin(int hp, int mp) : Monster(hp, mp);
+    public class Goblin(int hp, int mp) : Monster();
 
-    public class Orc(int hp, int mp) : Monster(hp, mp);
+    public class Orc(int hp, int mp) : Monster();
 
 
-    public class Player() : BattleObject
+    public class Player : BattleObject
     {
         public BattleObjectStat PlayerStat;
         
-        public Player(int hp, int mp) : this()
+        public Player()
         {
-            PlayerStat.Hp = hp;
-            PlayerStat.Mp = mp;
             Random random = new Random();
-            PlayerStat.Damage = random.Next();
+            PlayerStat.Hp = random.Next(1,10);
+            PlayerStat.Mp =  random.Next(1,10);
+            PlayerStat.Damage = random.Next(0,10);
         }
 
     }
