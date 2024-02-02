@@ -328,29 +328,14 @@ namespace TextRPG
         }
     }
 
-    public class Slime : Monster
-    {
-        public Slime(string name, int initHp, int initMp, int initDamage) : base(name, initHp, initMp, initDamage)
-        {
+    public class Slime(string name, int initHp, int initMp, int initDamage)
+        : Monster(name, initHp, initMp, initDamage);
 
-        }
-    }
+    public class Goblin(string name, int initHp, int initMp, int initDamage)
+        : Monster(name, initHp, initMp, initDamage);
 
-    public class Goblin : Monster
-    {
-        public Goblin(string name, int initHp, int initMp, int initDamage) : base(name, initHp, initMp, initDamage)
-        {
-
-        }
-    }
-
-    public class Orc : Monster
-    {
-        public Orc(string name, int initHp, int initMp, int initDamage) : base(name, initHp, initMp, initDamage)
-        {
-
-        }
-    }
+    public class Orc(string name, int initHp, int initMp, int initDamage)
+        : Monster(name, initHp, initMp, initDamage);
 
 
     public class Player : BattleObject
@@ -378,31 +363,13 @@ namespace TextRPG
 
     }
 
-    public class Archer : Player
-    {
-        public Archer(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage) :
-            base(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
-        {
-            
-        }
-    }
+    public class Archer(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
+        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage);
 
-    public class Warrior : Player
-    {
-        public Warrior(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage) :
-            base(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
-        {
-            
-        }
-    }
+    public class Warrior(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
+        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage);
 
-    public class Wizard : Player
-    {
-        public Wizard(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage) :
-            base(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
-        {
-            
-        }
-    }
+    public class Wizard(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
+        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage);
 }
 
