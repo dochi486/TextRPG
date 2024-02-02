@@ -297,13 +297,19 @@ namespace TextRPG
     public class Monster : BattleObject
     {
         public BattleObjectStat MonsterStat;
-        
         public Monster()
         {
             Random random = new Random();
             MonsterStat.Hp = random.Next(1,10);
             MonsterStat.Mp = random.Next(1,10);
             MonsterStat.Damage = random.Next(0, 10);
+        }
+
+        public Monster(int hp, int mp, int damage)
+        {
+            MonsterStat.Hp = hp;
+            MonsterStat.Mp = mp;
+            MonsterStat.Damage = damage;
         }
     }
 
@@ -324,6 +330,13 @@ namespace TextRPG
             PlayerStat.Hp = random.Next(1,10);
             PlayerStat.Mp =  random.Next(1,10);
             PlayerStat.Damage = random.Next(0,10);
+        }
+
+        public Player(int hp, int mp, int damage)
+        {
+            PlayerStat.Hp = hp;
+            PlayerStat.Mp = mp;
+            PlayerStat.Damage = damage;
         }
 
     }
