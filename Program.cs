@@ -11,11 +11,6 @@ Console.WriteLine("3. 궁수");
 
 var character = Console.ReadLine();
 
-
-Random random = new Random();
-int hp = random.Next(1, 10);
-int mp = random.Next(1, 10);
-
 Player player = new Player();
 
 switch (character)
@@ -60,12 +55,7 @@ switch (action)
     case "1":
         {
             Console.WriteLine("사냥하기");
-            Random monsterStat = new Random();
-
-            int monsterHp = monsterStat.Next(1, 10);
-            int monsterMp = monsterStat.Next(1, 10);
-
-            Monster slime = new Slime(monsterHp, monsterMp);
+            Monster slime = new Slime();
             Console.WriteLine($"몬스터 {nameof(slime)}가 나타났습니다!");
             Console.WriteLine($"{nameof(slime)}의 체력은 {slime.MonsterStat.Hp}입니다.");
 
@@ -133,12 +123,8 @@ switch(secondAction)
     case "1":
         {
             Console.WriteLine("사냥하기");
-            Random secondMonsterStat = new Random();
 
-            int orcHp = secondMonsterStat.Next(1, 10);
-            int orcMp = secondMonsterStat.Next(1, 10);
-
-            Monster orc = new Orc(orcHp, orcMp);
+            Monster orc = new Orc();
             Console.WriteLine($"몬스터 {nameof(orc)}가 나타났습니다!");
             Console.WriteLine($"{nameof(orc)}의 체력은 {orc.MonsterStat.Hp}입니다.");
 
@@ -208,12 +194,8 @@ switch(thirdAction)
     case "1":
         {
             Console.WriteLine("사냥하기");
-            Random thirdMonsterStat = new Random();
 
-            int goblinHp = thirdMonsterStat.Next(0, 10);
-            int goblinMp = thirdMonsterStat.Next(0, 10);
-
-            Monster goblin = new Goblin(goblinHp, goblinMp);
+            Monster goblin = new Goblin();
             Console.WriteLine($"몬스터 {nameof(goblin)}가 나타났습니다!");
             Console.WriteLine($"{nameof(goblin)}의 체력은 {goblin.MonsterStat.Hp}입니다.");
 
@@ -325,11 +307,11 @@ namespace TextRPG
         }
     }
 
-    public class Slime(int hp, int mp) : Monster();
+    public class Slime : Monster;
 
-    public class Goblin(int hp, int mp) : Monster();
+    public class Goblin : Monster;
 
-    public class Orc(int hp, int mp) : Monster();
+    public class Orc : Monster;
 
 
     public class Player : BattleObject
