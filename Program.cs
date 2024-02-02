@@ -289,7 +289,7 @@ namespace TextRPG
         public int GetDamage()
         { 
             Random random = new Random();
-            return random.Next(0, Stat.Damage);
+            return random.Next(1, Stat.Damage);
         }
     }
     
@@ -302,7 +302,7 @@ namespace TextRPG
             Random random = new Random();
             MonsterStat.Hp = random.Next(1,10);
             MonsterStat.Mp = random.Next(1,10);
-            MonsterStat.Damage = random.Next(0, 10);
+            MonsterStat.Damage = random.Next(1, 10);
         }
 
         public Monster(int hp, int mp, int damage)
@@ -329,7 +329,7 @@ namespace TextRPG
             Random random = new Random();
             PlayerStat.Hp = random.Next(1,10);
             PlayerStat.Mp =  random.Next(1,10);
-            PlayerStat.Damage = random.Next(0,10);
+            PlayerStat.Damage = random.Next(1,10);
         }
 
         public Player(int hp, int mp, int damage)
