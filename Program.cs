@@ -11,7 +11,6 @@ Console.WriteLine("3. 궁수");
 
 var character = Console.ReadLine();
 
-Player player = new Player();
 
 Random rand = new Random();
 var initHp = rand.Next(1, 10);
@@ -21,7 +20,10 @@ var initDex = rand.Next(1, 10);
 var initMagic = rand.Next(1, 10);
 var initDamage = rand.Next(1, 10);
 
-switch (character)
+Player player = new Player("플레이어", initHp,initMp,initStr,initDex,initMagic,initDamage);
+
+
+switch(character)
 {
     case "1":
         {
@@ -311,13 +313,6 @@ namespace TextRPG
 
     public class Monster : BattleObject
     {
-        public Monster()
-        {
-            Random random = new Random();
-            Stat.Hp = random.Next(1, 10);
-            Stat.Mp = random.Next(1, 10);
-            Stat.Damage = random.Next(1, 10);
-        }
 
         public Monster(string name, int hp, int mp, int damage) : base(name,
             new BattleObjectStat(hp, mp, 0, 0, 0, initDamage: damage))
@@ -340,25 +335,12 @@ namespace TextRPG
 
     public class Player : BattleObject
     {
-        public Player()
-        {
-            Random random = new Random();
-            Stat.Hp = random.Next(1, 10);
-            Stat.Mp = random.Next(1, 10);
-            Stat.Damage = random.Next(1, 10);
-        }
 
         public Player(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage) :
             base(name,
                 new BattleObjectStat(initHp, initMp, initStr: initStr, initDex: initDex, initMagic: initMagic,
                     initDamage: initDamage))
         {
-            Stat.Hp = initHp;
-            Stat.Mp = initMp;
-            Stat.Str = initStr;
-            Stat.Dex = initDex;
-            Stat.Magic = initMagic;
-            Stat.Damage = initDamage;
         }
 
     }
