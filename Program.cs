@@ -1,7 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using System;
-using System.Drawing;
-using System.Threading;
+
 using TextRPG;
 
 
@@ -13,19 +11,26 @@ Console.WriteLine("3. 궁수");
 
 var character = Console.ReadLine();
 
-Player player = new Player();
 
-switch (character)
+Random rand = new Random();
+var initHp = rand.Next(1, 10);
+var initMp = rand.Next(1, 10);
+var initStr = rand.Next(1, 10);
+var initDex = rand.Next(1, 10);
+var initMagic = rand.Next(1, 10);
+var initDamage = rand.Next(1, 10);
+
+Player player = new Player("플레이어", initHp,initMp,initStr,initDex,initMagic,initDamage);
+
+
+switch(character)
 {
     case "1":
         {
             Console.WriteLine("마법사 선택");
-            player = new Wizard();
-            Random random = new Random();
-            player.Hp = random.Next(1, 10);
-            player.Mp = random.Next(1, 10);
-            Console.WriteLine($"당신의 체력은 : {player.Hp}입니다.");
-            Console.WriteLine($"당신의 마력은 : {player.Mp}입니다.");
+            player = new Wizard("마법사", initHp, initMp, initStr, initDex, initMagic, initDamage);
+            Console.WriteLine($"당신의 체력은 : {player.Stat.Hp}입니다.");
+            Console.WriteLine($"당신의 마력은 : {player.Stat.Mp}입니다.");
 
 
         }
@@ -33,23 +38,17 @@ switch (character)
     case "2":
         {
             Console.WriteLine("전사 선택");
-            player = new Warrior();
-            Random random = new Random();
-            player.Hp = random.Next(1, 10);
-            player.Mp = random.Next(1, 10);
-            Console.WriteLine($"당신의 체력은 : {player.Hp}입니다.");
-            Console.WriteLine($"당신의 마력은 : {player.Mp}입니다.");
+            player = new Warrior("전사", initHp, initMp, initStr, initDex, initMagic, initDamage);
+            Console.WriteLine($"당신의 체력은 : {player.Stat.Hp}입니다.");
+            Console.WriteLine($"당신의 마력은 : {player.Stat.Mp}입니다.");
         }
         break;
     case "3":
         {
             Console.WriteLine("궁수 선택");
-            player = new Archer();
-            Random random = new Random();
-            player.Hp = random.Next(1, 10);
-            player.Mp = random.Next(1, 10);
-            Console.WriteLine($"당신의 체력은 : {player.Hp}입니다.");
-            Console.WriteLine($"당신의 마력은 : {player.Mp}입니다.");
+            player = new Archer("궁수", initHp, initMp, initStr, initDex, initMagic, initDamage);
+            Console.WriteLine($"당신의 체력은 : {player.Stat.Hp}입니다.");
+            Console.WriteLine($"당신의 마력은 : {player.Stat.Mp}입니다.");
         }
         break;
 }
@@ -57,23 +56,21 @@ switch (character)
 
 Console.WriteLine("무엇을 하시겠습니까?");
 Console.WriteLine("1. 사냥하기");
-Console.WriteLine("2. 쉬기"); ;
+Console.WriteLine("2. 쉬기");
 
 var action = Console.ReadLine();
 
 switch (action)
 {
     case "1":
-        {
+    {
+            var slimeHp = rand.Next(1, 10);
+            var slimeMp = rand.Next(1, 10);
+            var slimeDamage = rand.Next(1, 10);
             Console.WriteLine("사냥하기");
-            Random random = new Random();
-
-            int hp = random.Next(1, 10);
-            int mp = random.Next(1, 10);
-
-            Monster slime = new Slime(hp, mp);
+            Monster slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
             Console.WriteLine($"몬스터 {nameof(slime)}가 나타났습니다!");
-            Console.WriteLine($"{nameof(slime)}의 체력은 {slime.hp}입니다.");
+            Console.WriteLine($"{nameof(slime)}의 체력은 {slime.Stat.Hp}입니다.");
 
             Console.WriteLine("무엇을 하시겠습니까?");
             Console.WriteLine("1.공격하기");
@@ -85,22 +82,24 @@ switch (action)
             {
                 case "1":
                     {
-                        while(slime.hp > 0)
+                        while(slime.Stat.Hp > 0)
                         {
-
-                            slime.Attack(player);
-                            if(player.Hp <= 0)
+                            var damage = slime.GetDamage();
+                            player.Attack(damage);
+                            
+                            if(player.Stat.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
                                 Console.WriteLine("The End");
                                 break;
                             }
 
-                            player.Attack(slime);
-                            if(slime.hp <= 0)
+                            var playerDamage = player.GetDamage();                         
+                            slime.Attack(playerDamage);
+                            if(slime.Stat.Hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
-                                player.Hp += 10;
+                                player.Stat.Hp += 10;
                                 Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
 
                                 Console.WriteLine("슬라임을 처치했습니다. 무엇을 하시겠습니까?");
@@ -108,8 +107,6 @@ switch (action)
                                 Console.WriteLine("2. 쉬기");
                                 break;
                             }
-
-                         
                         }
                     }
                     break;
@@ -139,14 +136,12 @@ switch(secondAction)
     case "1":
         {
             Console.WriteLine("사냥하기");
-            Random random = new Random();
-
-            int hp = random.Next(1, 10);
-            int mp = random.Next(1, 10);
-
-            Monster orc = new Orc(hp, mp);
+            var orcHp = rand.Next(1, 10);
+            var orcMp = rand.Next(1, 10);
+            var orcDamage = rand.Next(1, 10);
+            Monster orc = new Orc("오크", orcHp, orcMp, orcDamage);
             Console.WriteLine($"몬스터 {nameof(orc)}가 나타났습니다!");
-            Console.WriteLine($"{nameof(orc)}의 체력은 {orc.hp}입니다.");
+            Console.WriteLine($"{nameof(orc)}의 체력은 {orc.Stat.Hp}입니다.");
 
             Console.WriteLine("무엇을 하시겠습니까?");
             Console.WriteLine("1.공격하기");
@@ -158,21 +153,25 @@ switch(secondAction)
             {
                 case "1":
                     {
-                        while(orc.hp > 0)
+                        while(orc.Stat.Hp > 0)
                         {
-                            orc.Attack(player);
-                            if(player.Hp <= 0)
+                            var damage = orc.GetDamage();
+                            player.Attack(damage);
+                            
+                            if(player.Stat.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
                                 Console.WriteLine("The End");
                                 break;
                             }
 
-                            player.Attack(orc);
-                            if(orc.hp <= 0)
+                            var playerDamage = player.GetDamage();
+                            orc.Attack(playerDamage);
+                            
+                            if(orc.Stat.Hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(orc)}을 처치하고 경험치를 얻었습니다.");
-                                player.Hp += 10;
+                                player.Stat.Hp += 10;
                                 Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
 
                                 Console.WriteLine("오크를 처치했습니다. 무엇을 하시겠습니까?");
@@ -210,14 +209,12 @@ switch(thirdAction)
     case "1":
         {
             Console.WriteLine("사냥하기");
-            Random random = new Random();
-
-            int hp = random.Next(0, 10);
-            int mp = random.Next(0, 10);
-
-            Monster goblin = new Goblin(hp, mp);
+            var goblinHp = rand.Next(1, 10);
+            var goblinMp = rand.Next(1, 10);
+            var goblinDamage = rand.Next(1, 10);
+            Monster goblin = new Goblin("고블린", goblinHp, goblinMp, goblinDamage);
             Console.WriteLine($"몬스터 {nameof(goblin)}가 나타났습니다!");
-            Console.WriteLine($"{nameof(goblin)}의 체력은 {goblin.hp}입니다.");
+            Console.WriteLine($"{nameof(goblin)}의 체력은 {goblin.Stat.Hp}입니다.");
 
             Console.WriteLine("무엇을 하시겠습니까?");
             Console.WriteLine("1.공격하기");
@@ -229,21 +226,24 @@ switch(thirdAction)
             {
                 case "1":
                     {
-                        while(goblin.hp > 0)
+                        while(goblin.Stat.Hp > 0)
                         {
-                            goblin.Attack(player);
-                            if(player.Hp <= 0)
+                            var damage = goblin.GetDamage();
+                            player.Attack(damage);
+                            
+                            if(player.Stat.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
                                 Console.WriteLine("The End");
                                 break;
                             }
 
-                            player.Attack(goblin);
-                            if(goblin.hp <= 0)
+                            var playerDamage = player.GetDamage();
+                            goblin.Attack(playerDamage);
+                            if(goblin.Stat.Hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
-                                player.Hp += 10;
+                                player.Stat.Hp += 10;
                                 Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
 
                                 Console.WriteLine("고블린을 처치했습니다. 여행이 끝났습니다.");
@@ -273,66 +273,108 @@ switch(thirdAction)
 
 namespace TextRPG
 {
-    public class Monster(int hp, int mp)
+    public class BattleObject()
     {
-        public int hp { get; set; } = hp;
-        public int mp { get; set; } = mp;
+        public string? Name { get; set; }
 
-        public void Attack(Player player)
+        public struct BattleObjectStat(int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
         {
-            // 상대방의 체력을 깎는다. 
-            Random random = new Random();
-            var attack = random.Next(0, 5);
-            player.Hp -= attack;
-            Console.WriteLine($"플레이어에게 {attack}만큼의 대미지를 주었습니다.");
+            public int Hp { get; set; } = initHp;
+            public int Mp { get; set; } = initMp;
+            public int Str { get; set; } = initStr;
+            public int Dex { get; set; } = initDex;
+            public int Magic { get; set; } = initMagic;
+            public int Damage { get; set; } = initDamage;
         }
 
-        public void Defense()
+        public BattleObjectStat Stat;
+
+
+        public BattleObject(string name, BattleObjectStat stat) : this()
         {
-
+            this.Name = name;
+            Stat = stat;
         }
-    }
 
-    public class Slime(int hp, int mp) : Monster(hp, mp);
+        public void Attack(int damage)
+        {
+            BattleObjectStat modifiedStat = Stat;
+            modifiedStat.Hp -= damage;
+            Stat = modifiedStat;
+        }
 
-    public class Goblin(int hp, int mp) : Monster(hp, mp);
-
-    public class Orc(int hp, int mp) : Monster(hp, mp);
-
-
-    public class Player
-    {
-        public int Hp { get; set; }
-        public int Mp { get; set; }
-
-        public void Attack(Monster monster)
+        public virtual int GetDamage()
         {
             Random random = new Random();
-            var attack = random.Next(0, 5);
-            monster.hp -= attack;
-            Console.WriteLine($"{nameof(monster)}에게 {attack}만큼의 대미지를 주었습니다.");
+            return random.Next(1, Stat.Damage);
         }
+    }
 
-        public void Defense()
+
+    public class Monster : BattleObject
+    {
+
+        public Monster(string name, int hp, int mp, int damage) : base(name,
+            new BattleObjectStat(hp, mp, 0, 0, 0, initDamage: damage))
         {
-
+            Stat.Hp = hp;
+            Stat.Mp = mp;
+            Stat.Damage = damage;
         }
     }
 
-    public class Archer : Player
+    public class Slime(string name, int initHp, int initMp, int initDamage)
+        : Monster(name, initHp, initMp, initDamage);
+
+    public class Goblin(string name, int initHp, int initMp, int initDamage)
+        : Monster(name, initHp, initMp, initDamage);
+
+    public class Orc(string name, int initHp, int initMp, int initDamage)
+        : Monster(name, initHp, initMp, initDamage);
+
+
+    public class Player : BattleObject
     {
-        public int dex;
+
+        public Player(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage) :
+            base(name,
+                new BattleObjectStat(initHp, initMp, initStr: initStr, initDex: initDex, initMagic: initMagic,
+                    initDamage: initDamage))
+        {
+        }
 
     }
-    public class Warrior : Player
-    {
-        public int str;
 
-    }
-    public class Wizard : Player
+    public class Archer(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
+        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
     {
-        public int magic;
-
+        public override int GetDamage()
+        {
+            return this.Stat.Damage + this.Stat.Dex;
+        }
     }
+
+    public class Warrior(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
+        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
+    {
+        public override int GetDamage()
+        {
+            return this.Stat.Damage + this.Stat.Str;
+        }
+    }
+
+    public class Wizard(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
+        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
+    {
+        public override int GetDamage()
+        {
+            return this.Stat.Damage + this.Stat.Magic;
+        }
+    }
+}
+
+public static class Util
+{
+    public static int GetRandom(int max) => new Random().Next(1, max);
 }
 
