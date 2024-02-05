@@ -10,13 +10,12 @@ Console.WriteLine("3. 궁수");
 var character = Console.ReadLine();
 
 
-Random rand = new Random();
-var initHp = rand.Next(1, 10);
-var initMp = rand.Next(1, 10);
-var initStr = rand.Next(1, 10);
-var initDex = rand.Next(1, 10);
-var initMagic = rand.Next(1, 10);
-var initDamage = rand.Next(1, 10);
+var initHp = Util.GetRandom(10);
+var initMp = Util.GetRandom(10);
+var initStr = Util.GetRandom(10);
+var initDex = Util.GetRandom(10);
+var initMagic = Util.GetRandom(10);
+var initDamage = Util.GetRandom(10);
 
 Player player = new Player("플레이어", initHp,initMp,initStr,initDex,initMagic,initDamage);
 
@@ -62,9 +61,9 @@ switch (action)
 {
     case "1":
     {
-            var slimeHp = rand.Next(1, 10);
-            var slimeMp = rand.Next(1, 10);
-            var slimeDamage = rand.Next(1, 10);
+            var slimeHp = Util.GetRandom(10);
+            var slimeMp = Util.GetRandom(10);
+            var slimeDamage = Util.GetRandom(10);
             Console.WriteLine("사냥하기");
             Monster slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
             Console.WriteLine($"몬스터 {nameof(slime)}가 나타났습니다!");
@@ -134,9 +133,9 @@ switch(secondAction)
     case "1":
         {
             Console.WriteLine("사냥하기");
-            var orcHp = rand.Next(1, 10);
-            var orcMp = rand.Next(1, 10);
-            var orcDamage = rand.Next(1, 10);
+            var orcHp = Util.GetRandom(10);
+            var orcMp = Util.GetRandom(10);
+            var orcDamage = Util.GetRandom(10);
             Monster orc = new Orc("오크", orcHp, orcMp, orcDamage);
             Console.WriteLine($"몬스터 {nameof(orc)}가 나타났습니다!");
             Console.WriteLine($"{nameof(orc)}의 체력은 {orc.Stat.Hp}입니다.");
@@ -207,9 +206,9 @@ switch(thirdAction)
     case "1":
         {
             Console.WriteLine("사냥하기");
-            var goblinHp = rand.Next(1, 10);
-            var goblinMp = rand.Next(1, 10);
-            var goblinDamage = rand.Next(1, 10);
+            var goblinHp = Util.GetRandom(10);
+            var goblinMp = Util.GetRandom(10);
+            var goblinDamage = Util.GetRandom(10);
             Monster goblin = new Goblin("고블린", goblinHp, goblinMp, goblinDamage);
             Console.WriteLine($"몬스터 {nameof(goblin)}가 나타났습니다!");
             Console.WriteLine($"{nameof(goblin)}의 체력은 {goblin.Stat.Hp}입니다.");
@@ -262,7 +261,7 @@ switch(thirdAction)
         break;
     case "2":
         {
-            Console.WriteLine("쉬기");
+            Util.Print("쉬기");
             Console.WriteLine("당신은 영원히 잠들었습니다.");
             Console.WriteLine("The End");
         }
@@ -274,6 +273,11 @@ namespace TextRPG
     public static class Util
     {
         public static int GetRandom(int max) => new Random().Next(1, max);
+
+        public static void Print(string in_string)
+        {
+            Console.WriteLine(in_string);
+        }
     }
 }
 
