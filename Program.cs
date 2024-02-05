@@ -303,7 +303,7 @@ namespace TextRPG
             Stat = modifiedStat;
         }
 
-        public int GetDamage()
+        public virtual int GetDamage()
         {
             Random random = new Random();
             return random.Next(1, Stat.Damage);
@@ -346,12 +346,30 @@ namespace TextRPG
     }
 
     public class Archer(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
-        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage);
+        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
+    {
+        public override int GetDamage()
+        {
+            return this.Stat.Damage + this.Stat.Dex;
+        }
+    }
 
     public class Warrior(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
-        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage);
+        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
+    {
+        public override int GetDamage()
+        {
+            return this.Stat.Damage + this.Stat.Str;
+        }
+    }
 
     public class Wizard(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
-        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage);
+        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
+    {
+        public override int GetDamage()
+        {
+            return this.Stat.Damage + this.Stat.Magic;
+        }
+    }
 }
 
