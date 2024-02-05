@@ -2,8 +2,6 @@
 
 using TextRPG;
 
-
-
 Console.WriteLine("클래스를 선택하세요.");
 Console.WriteLine("1. 마법사");
 Console.WriteLine("2. 전사");
@@ -273,108 +271,9 @@ switch(thirdAction)
 
 namespace TextRPG
 {
-    public class BattleObject()
+    public static class Util
     {
-        public string? Name { get; set; }
-
-        public struct BattleObjectStat(int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
-        {
-            public int Hp { get; set; } = initHp;
-            public int Mp { get; set; } = initMp;
-            public int Str { get; set; } = initStr;
-            public int Dex { get; set; } = initDex;
-            public int Magic { get; set; } = initMagic;
-            public int Damage { get; set; } = initDamage;
-        }
-
-        public BattleObjectStat Stat;
-
-
-        public BattleObject(string name, BattleObjectStat stat) : this()
-        {
-            this.Name = name;
-            Stat = stat;
-        }
-
-        public void Attack(int damage)
-        {
-            BattleObjectStat modifiedStat = Stat;
-            modifiedStat.Hp -= damage;
-            Stat = modifiedStat;
-        }
-
-        public virtual int GetDamage()
-        {
-            Random random = new Random();
-            return random.Next(1, Stat.Damage);
-        }
+        public static int GetRandom(int max) => new Random().Next(1, max);
     }
-
-
-    public class Monster : BattleObject
-    {
-
-        public Monster(string name, int hp, int mp, int damage) : base(name,
-            new BattleObjectStat(hp, mp, 0, 0, 0, initDamage: damage))
-        {
-            Stat.Hp = hp;
-            Stat.Mp = mp;
-            Stat.Damage = damage;
-        }
-    }
-
-    public class Slime(string name, int initHp, int initMp, int initDamage)
-        : Monster(name, initHp, initMp, initDamage);
-
-    public class Goblin(string name, int initHp, int initMp, int initDamage)
-        : Monster(name, initHp, initMp, initDamage);
-
-    public class Orc(string name, int initHp, int initMp, int initDamage)
-        : Monster(name, initHp, initMp, initDamage);
-
-
-    public class Player : BattleObject
-    {
-
-        public Player(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage) :
-            base(name,
-                new BattleObjectStat(initHp, initMp, initStr: initStr, initDex: initDex, initMagic: initMagic,
-                    initDamage: initDamage))
-        {
-        }
-
-    }
-
-    public class Archer(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
-        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
-    {
-        public override int GetDamage()
-        {
-            return this.Stat.Damage + this.Stat.Dex;
-        }
-    }
-
-    public class Warrior(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
-        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
-    {
-        public override int GetDamage()
-        {
-            return this.Stat.Damage + this.Stat.Str;
-        }
-    }
-
-    public class Wizard(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
-        : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)
-    {
-        public override int GetDamage()
-        {
-            return this.Stat.Damage + this.Stat.Magic;
-        }
-    }
-}
-
-public static class Util
-{
-    public static int GetRandom(int max) => new Random().Next(1, max);
 }
 
