@@ -82,8 +82,7 @@ switch (action)
                             
                             if(player.Stat.Hp <= 0)
                             {
-                                Console.WriteLine("플레이어 사망");
-                                Console.WriteLine("The End");
+                                PlayerDialogues.PlayerDead();
                                 break;
                             }
 
@@ -105,8 +104,7 @@ switch (action)
                     break;
                 case "2":
                     {
-                        Console.WriteLine("당신은 사냥터에서 도망쳐서 영원히 패배자로 낙인이 찍혔습니다.");
-                        Console.WriteLine("The End");
+                        PlayerDialogues.PlayerRun();
                     }
                     break;
             }
@@ -114,9 +112,7 @@ switch (action)
         break;
     case "2":
         {
-            Console.WriteLine("쉬기");
-            Console.WriteLine("당신은 영원히 잠들었습니다.");
-            Console.WriteLine("The End");
+            PlayerDialogues.PlayerRest();
         }
         break;
 }
@@ -151,8 +147,7 @@ switch(secondAction)
                             
                             if(player.Stat.Hp <= 0)
                             {
-                                Console.WriteLine("플레이어 사망");
-                                Console.WriteLine("The End");
+                                PlayerDialogues.PlayerDead();
                                 break;
                             }
 
@@ -176,8 +171,7 @@ switch(secondAction)
                     break;
                 case "2":
                     {
-                        Console.WriteLine("당신은 사냥터에서 도망쳐서 영원히 패배자로 낙인이 찍혔습니다.");
-                        Console.WriteLine("The End");
+                        PlayerDialogues.PlayerRun();
                     }
                     break;
             }
@@ -185,9 +179,7 @@ switch(secondAction)
         break;
     case "2":
         {
-            Console.WriteLine("쉬기");
-            Console.WriteLine("당신은 영원히 잠들었습니다.");
-            Console.WriteLine("The End");
+            PlayerDialogues.PlayerRest();
         }
         break;
 }
@@ -222,8 +214,7 @@ switch(thirdAction)
                             
                             if(player.Stat.Hp <= 0)
                             {
-                                Console.WriteLine("플레이어 사망");
-                                Console.WriteLine("The End");
+                                PlayerDialogues.PlayerDead();
                                 break;
                             }
 
@@ -244,8 +235,7 @@ switch(thirdAction)
                     break;
                 case "2":
                     {
-                        Console.WriteLine("당신은 사냥터에서 도망쳐서 영원히 패배자로 낙인이 찍혔습니다.");
-                        Console.WriteLine("The End");
+                        PlayerDialogues.PlayerRun();
                     }
                     break;
             }
@@ -253,9 +243,7 @@ switch(thirdAction)
         break;
     case "2":
         {
-            Console.WriteLine("쉬기");
-            Console.WriteLine("당신은 영원히 잠들었습니다.");
-            Console.WriteLine("The End");
+            PlayerDialogues.PlayerRest();
         }
         break;
 }

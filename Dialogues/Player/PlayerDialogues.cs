@@ -14,5 +14,23 @@ public class PlayerDialogues
     {
         
     }
+
+    public static void PlayerRest()
+    {
+        Console.WriteLine("쉬기");
+        Console.WriteLine("당신은 영원히 잠들었습니다.");
+        Console.WriteLine("The End");
+    }
     
+    public static void PlayerRun()
+    {
+        Console.WriteLine("당신은 사냥터에서 도망쳐서 영원히 패배자로 낙인이 찍혔습니다.");
+        Console.WriteLine("The End");
+    }
+
+    public static void PlayerDead()
+    {
+        Console.WriteLine("플레이어 사망");
+        Console.WriteLine("The End");
+    }
 }
