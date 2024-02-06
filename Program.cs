@@ -16,10 +16,10 @@ var initDex = Util.GetRandom(10);
 var initMagic = Util.GetRandom(10);
 var initDamage = Util.GetRandom(10);
 
-Player player = new Player("플레이어", initHp,initMp,initStr,initDex,initMagic,initDamage);
+Player player = new Player("플레이어", initHp, initMp, initStr, initDex, initMagic, initDamage);
 
 
-switch(character)
+switch (character)
 {
     case "1":
         {
@@ -58,7 +58,7 @@ var action = Console.ReadLine();
 switch (action)
 {
     case "1":
-    {
+        {
             var slimeHp = Util.GetRandom(10);
             var slimeMp = Util.GetRandom(10);
             var slimeDamage = Util.GetRandom(10);
@@ -75,20 +75,20 @@ switch (action)
             {
                 case "1":
                     {
-                        while(slime.Stat.Hp > 0)
+                        while (slime.Stat.Hp > 0)
                         {
                             var damage = slime.GetDamage();
                             player.Attack(damage);
-                            
-                            if(player.Stat.Hp <= 0)
+
+                            if (player.Stat.Hp <= 0)
                             {
                                 PlayerDialogues.PlayerDead();
                                 break;
                             }
 
-                            var playerDamage = player.GetDamage();                         
+                            var playerDamage = player.GetDamage();
                             slime.Attack(playerDamage);
-                            if(slime.Stat.Hp <= 0)
+                            if (slime.Stat.Hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
                                 player.Stat.Hp += 10;
@@ -108,7 +108,7 @@ switch (action)
                     }
                     break;
             }
-        } 
+        }
         break;
     case "2":
         {
@@ -120,7 +120,7 @@ switch (action)
 
 var secondAction = Console.ReadLine();
 
-switch(secondAction)
+switch (secondAction)
 {
     case "1":
         {
@@ -132,16 +132,16 @@ switch(secondAction)
 
             var playerAction = Console.ReadLine();
 
-            switch(playerAction)
+            switch (playerAction)
             {
                 case "1":
                     {
-                        while(orc.Stat.Hp > 0)
+                        while (orc.Stat.Hp > 0)
                         {
                             var damage = orc.GetDamage();
                             player.Attack(damage);
-                            
-                            if(player.Stat.Hp <= 0)
+
+                            if (player.Stat.Hp <= 0)
                             {
                                 PlayerDialogues.PlayerDead();
                                 break;
@@ -149,8 +149,8 @@ switch(secondAction)
 
                             var playerDamage = player.GetDamage();
                             orc.Attack(playerDamage);
-                            
-                            if(orc.Stat.Hp <= 0)
+
+                            if (orc.Stat.Hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(orc)}을 처치하고 경험치를 얻었습니다.");
                                 player.Stat.Hp += 10;
@@ -161,7 +161,7 @@ switch(secondAction)
                                 Console.WriteLine("2. 쉬기");
                                 break;
                             }
-                            
+
                         }
                     }
                     break;
@@ -183,7 +183,7 @@ switch(secondAction)
 
 var thirdAction = Console.ReadLine();
 
-switch(thirdAction)
+switch (thirdAction)
 {
     case "1":
         {
@@ -199,16 +199,16 @@ switch(thirdAction)
 
             var playerAction = Console.ReadLine();
 
-            switch(playerAction)
+            switch (playerAction)
             {
                 case "1":
                     {
-                        while(goblin.Stat.Hp > 0)
+                        while (goblin.Stat.Hp > 0)
                         {
                             var damage = goblin.GetDamage();
                             player.Attack(damage);
-                            
-                            if(player.Stat.Hp <= 0)
+
+                            if (player.Stat.Hp <= 0)
                             {
                                 PlayerDialogues.PlayerDead();
                                 break;
@@ -216,7 +216,7 @@ switch(thirdAction)
 
                             var playerDamage = player.GetDamage();
                             goblin.Attack(playerDamage);
-                            if(goblin.Stat.Hp <= 0)
+                            if (goblin.Stat.Hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
                                 player.Stat.Hp += 10;
@@ -225,7 +225,7 @@ switch(thirdAction)
                                 Console.WriteLine("고블린을 처치했습니다. 여행이 끝났습니다.");
                                 break;
                             }
-                            
+
                         }
                     }
                     break;

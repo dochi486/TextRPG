@@ -12,7 +12,7 @@ public class PlayerDialogues
 
     public static void PlayerStatShow()
     {
-        
+
     }
 
     public static void PlayerRest()
@@ -21,7 +21,7 @@ public class PlayerDialogues
         Console.WriteLine("당신은 영원히 잠들었습니다.");
         Console.WriteLine("The End");
     }
-    
+
     public static void PlayerRun()
     {
         Console.WriteLine("당신은 사냥터에서 도망쳐서 영원히 패배자로 낙인이 찍혔습니다.");
