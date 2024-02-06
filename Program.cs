@@ -253,7 +253,7 @@ switch(thirdAction)
         break;
     case "2":
         {
-            Util.Print("쉬기");
+            Console.WriteLine("쉬기");
             Console.WriteLine("당신은 영원히 잠들었습니다.");
             Console.WriteLine("The End");
         }
@@ -265,11 +265,6 @@ namespace TextRPG
     public static class Util
     {
         public static int GetRandom(int max) => new Random().Next(1, max);
-
-        public static void Print(string in_string)
-        {
-            Console.WriteLine(in_string);
-        }
     }
 }
 
