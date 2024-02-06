@@ -1,11 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using TextRPG;
+using TextRPG.Dialogues.Player;
+using TextRPG.Stage;
 
-Console.WriteLine("클래스를 선택하세요.");
-Console.WriteLine("1. 마법사");
-Console.WriteLine("2. 전사");
-Console.WriteLine("3. 궁수");
+PlayerDialogues.PlayerClassSelect();
 
 var character = Console.ReadLine();
 
@@ -28,7 +27,6 @@ switch(character)
             player = new Wizard("마법사", initHp, initMp, initStr, initDex, initMagic, initDamage);
             Console.WriteLine($"당신의 체력은 : {player.Stat.Hp}입니다.");
             Console.WriteLine($"당신의 마력은 : {player.Stat.Mp}입니다.");
-
 
         }
         break;
@@ -69,9 +67,7 @@ switch (action)
             Console.WriteLine($"몬스터 {nameof(slime)}가 나타났습니다!");
             Console.WriteLine($"{nameof(slime)}의 체력은 {slime.Stat.Hp}입니다.");
 
-            Console.WriteLine("무엇을 하시겠습니까?");
-            Console.WriteLine("1.공격하기");
-            Console.WriteLine("2.도망가기");
+            Stage.BattleSelectDialogue();
 
             var playerAction = Console.ReadLine();
 
@@ -140,9 +136,7 @@ switch(secondAction)
             Console.WriteLine($"몬스터 {nameof(orc)}가 나타났습니다!");
             Console.WriteLine($"{nameof(orc)}의 체력은 {orc.Stat.Hp}입니다.");
 
-            Console.WriteLine("무엇을 하시겠습니까?");
-            Console.WriteLine("1.공격하기");
-            Console.WriteLine("2.도망가기");
+            Stage.BattleSelectDialogue();
 
             var playerAction = Console.ReadLine();
 
@@ -213,9 +207,7 @@ switch(thirdAction)
             Console.WriteLine($"몬스터 {nameof(goblin)}가 나타났습니다!");
             Console.WriteLine($"{nameof(goblin)}의 체력은 {goblin.Stat.Hp}입니다.");
 
-            Console.WriteLine("무엇을 하시겠습니까?");
-            Console.WriteLine("1.공격하기");
-            Console.WriteLine("2.도망가기");
+            Stage.BattleSelectDialogue();
 
             var playerAction = Console.ReadLine();
 
