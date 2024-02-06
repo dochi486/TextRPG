@@ -85,11 +85,11 @@ switch (action)
             {
                 case "1":
                     {
-                        while(slime.hp > 0)
+                        while (slime.hp > 0)
                         {
 
                             slime.Attack(player);
-                            if(player.Hp <= 0)
+                            if (player.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
                                 Console.WriteLine("The End");
@@ -97,7 +97,7 @@ switch (action)
                             }
 
                             player.Attack(slime);
-                            if(slime.hp <= 0)
+                            if (slime.hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
                                 player.Hp += 10;
@@ -109,7 +109,7 @@ switch (action)
                                 break;
                             }
 
-                         
+
                         }
                     }
                     break;
@@ -120,7 +120,7 @@ switch (action)
                     }
                     break;
             }
-        } 
+        }
         break;
     case "2":
         {
@@ -134,7 +134,7 @@ switch (action)
 
 var secondAction = Console.ReadLine();
 
-switch(secondAction)
+switch (secondAction)
 {
     case "1":
         {
@@ -154,14 +154,14 @@ switch(secondAction)
 
             var playerAction = Console.ReadLine();
 
-            switch(playerAction)
+            switch (playerAction)
             {
                 case "1":
                     {
-                        while(orc.hp > 0)
+                        while (orc.hp > 0)
                         {
                             orc.Attack(player);
-                            if(player.Hp <= 0)
+                            if (player.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
                                 Console.WriteLine("The End");
@@ -169,7 +169,7 @@ switch(secondAction)
                             }
 
                             player.Attack(orc);
-                            if(orc.hp <= 0)
+                            if (orc.hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(orc)}을 처치하고 경험치를 얻었습니다.");
                                 player.Hp += 10;
@@ -180,7 +180,7 @@ switch(secondAction)
                                 Console.WriteLine("2. 쉬기");
                                 break;
                             }
-                            
+
                         }
                     }
                     break;
@@ -205,7 +205,7 @@ switch(secondAction)
 
 var thirdAction = Console.ReadLine();
 
-switch(thirdAction)
+switch (thirdAction)
 {
     case "1":
         {
@@ -225,14 +225,14 @@ switch(thirdAction)
 
             var playerAction = Console.ReadLine();
 
-            switch(playerAction)
+            switch (playerAction)
             {
                 case "1":
                     {
-                        while(goblin.hp > 0)
+                        while (goblin.hp > 0)
                         {
                             goblin.Attack(player);
-                            if(player.Hp <= 0)
+                            if (player.Hp <= 0)
                             {
                                 Console.WriteLine("플레이어 사망");
                                 Console.WriteLine("The End");
@@ -240,7 +240,7 @@ switch(thirdAction)
                             }
 
                             player.Attack(goblin);
-                            if(goblin.hp <= 0)
+                            if (goblin.hp <= 0)
                             {
                                 Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
                                 player.Hp += 10;
@@ -249,7 +249,7 @@ switch(thirdAction)
                                 Console.WriteLine("고블린을 처치했습니다. 여행이 끝났습니다.");
                                 break;
                             }
-                            
+
                         }
                     }
                     break;
