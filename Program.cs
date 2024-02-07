@@ -45,9 +45,7 @@ switch (character)
 }
 
 
-Console.WriteLine("무엇을 하시겠습니까?");
-Console.WriteLine("1. 사냥하기");
-Console.WriteLine("2. 쉬기");
+PlayerDialogues.ActionChoose();
 
 var action = Console.ReadLine();
 
@@ -58,7 +56,7 @@ switch (action)
             var slimeHp = Util.GetRandom(10);
             var slimeMp = Util.GetRandom(10);
             var slimeDamage = Util.GetRandom(10);
-            Console.WriteLine("사냥하기");
+
             Monster slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
             
             MonsterDialogue.SpawnMonster(slime);
@@ -86,13 +84,11 @@ switch (action)
                             slime.Attack(playerDamage);
                             if (slime.Stat.Hp <= 0)
                             {
-                                Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
+                                MonsterDialogue.KilledMonster(slime);
                                 player.Stat.Hp += 10;
                                 PlayerDialogues.PlayerHPIncreased(10);
 
-                                Console.WriteLine("슬라임을 처치했습니다. 무엇을 하시겠습니까?");
-                                Console.WriteLine("1. 사냥하기");
-                                Console.WriteLine("2. 쉬기");
+                                PlayerDialogues.ActionChoose();
                                 break;
                             }
                         }
@@ -120,8 +116,6 @@ switch (secondAction)
 {
     case "1":
         {
-            Console.WriteLine("사냥하기");
-
             var orcHp = Util.GetRandom(10);
             var orcMp = Util.GetRandom(10);
             var orcDamage = Util.GetRandom(10);
@@ -153,13 +147,11 @@ switch (secondAction)
 
                             if (orc.Stat.Hp <= 0)
                             {
-                                Console.WriteLine($"{nameof(orc)}을 처치하고 경험치를 얻었습니다.");
+                                MonsterDialogue.KilledMonster(orc);
                                 player.Stat.Hp += 10;
                                 PlayerDialogues.PlayerHPIncreased(10);
 
-                                Console.WriteLine("오크를 처치했습니다. 무엇을 하시겠습니까?");
-                                Console.WriteLine("1. 사냥하기");
-                                Console.WriteLine("2. 쉬기");
+                                PlayerDialogues.ActionChoose();
                                 break;
                             }
 
@@ -188,7 +180,6 @@ switch (thirdAction)
 {
     case "1":
         {
-            Console.WriteLine("사냥하기");
             var goblinHp = Util.GetRandom(10);
             var goblinMp = Util.GetRandom(10);
             var goblinDamage = Util.GetRandom(10);
@@ -219,11 +210,11 @@ switch (thirdAction)
                             goblin.Attack(playerDamage);
                             if (goblin.Stat.Hp <= 0)
                             {
-                                Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
+                                MonsterDialogue.KilledMonster(goblin);
                                 player.Stat.Hp += 10;
                                 PlayerDialogues.PlayerHPIncreased(10);
-
-                                Console.WriteLine("고블린을 처치했습니다. 여행이 끝났습니다.");
+                                
+                                PlayerDialogues.EndJourney();
                                 break;
                             }
 
