@@ -37,4 +37,9 @@ public class PlayerDialogues
         Console.WriteLine("플레이어 사망");
         Console.WriteLine("The End");
     }
+
+    public static void PlayerHPIncreased(int inHp)
+    {
+        Console.WriteLine($"당신의 체력이 {inHp}만큼 올랐습니다.");
+    }
 }

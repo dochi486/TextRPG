@@ -3,6 +3,7 @@
 using TextRPG;
 using TextRPG.Dialogues.Player;
 using TextRPG.Stage;
+using TextRPG.Util;
 
 PlayerDialogues.PlayerClassSelect();
 
@@ -87,7 +88,7 @@ switch (action)
                             {
                                 Console.WriteLine($"{nameof(slime)}을 처치하고 경험치를 얻었습니다.");
                                 player.Stat.Hp += 10;
-                                Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
+                                PlayerDialogues.PlayerHPIncreased(10);
 
                                 Console.WriteLine("슬라임을 처치했습니다. 무엇을 하시겠습니까?");
                                 Console.WriteLine("1. 사냥하기");
@@ -154,7 +155,7 @@ switch (secondAction)
                             {
                                 Console.WriteLine($"{nameof(orc)}을 처치하고 경험치를 얻었습니다.");
                                 player.Stat.Hp += 10;
-                                Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
+                                PlayerDialogues.PlayerHPIncreased(10);
 
                                 Console.WriteLine("오크를 처치했습니다. 무엇을 하시겠습니까?");
                                 Console.WriteLine("1. 사냥하기");
@@ -220,7 +221,7 @@ switch (thirdAction)
                             {
                                 Console.WriteLine($"{nameof(goblin)}을 처치하고 경험치를 얻었습니다.");
                                 player.Stat.Hp += 10;
-                                Console.WriteLine($"당신의 체력이 10만큼 올랐습니다.");
+                                PlayerDialogues.PlayerHPIncreased(10);
 
                                 Console.WriteLine("고블린을 처치했습니다. 여행이 끝났습니다.");
                                 break;
@@ -244,11 +245,4 @@ switch (thirdAction)
         break;
 }
 
-namespace TextRPG
-{
-    public static class Util
-    {
-        public static int GetRandom(int max) => new Random().Next(1, max);
-    }
-}
 
