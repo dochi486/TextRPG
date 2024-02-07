@@ -2,15 +2,9 @@
 
 public class MonsterDialogue
 {
-    public static Orc SpawnOrc()
+    public static void SpawnMonster(Monster monster)
     {
-        var orcHp = Util.GetRandom(10);
-        var orcMp = Util.GetRandom(10);
-        var orcDamage = Util.GetRandom(10);
-        Orc orc = new Orc("오크", orcHp, orcMp, orcDamage);
-        Console.WriteLine($"몬스터 {nameof(orc)}가 나타났습니다!");
-        Console.WriteLine($"{nameof(orc)}의 체력은 {orc.Stat.Hp}입니다.");
-
-        return orc;
+        Console.WriteLine($"몬스터 {nameof(monster)}가 나타났습니다!");
+        Console.WriteLine($"{nameof(monster)}의 체력은 {monster.Stat.Hp}입니다.");
     }
 }

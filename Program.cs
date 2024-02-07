@@ -18,32 +18,27 @@ var initDamage = Util.GetRandom(10);
 
 Player player = new Player("플레이어", initHp, initMp, initStr, initDex, initMagic, initDamage);
 
-
 switch (character)
 {
     case "1":
         {
             Console.WriteLine("마법사 선택");
             player = new Wizard("마법사", initHp, initMp, initStr, initDex, initMagic, initDamage);
-            Console.WriteLine($"당신의 체력은 : {player.Stat.Hp}입니다.");
-            Console.WriteLine($"당신의 마력은 : {player.Stat.Mp}입니다.");
-
+            PlayerDialogues.PlayerStatShow(player);
         }
         break;
     case "2":
         {
             Console.WriteLine("전사 선택");
             player = new Warrior("전사", initHp, initMp, initStr, initDex, initMagic, initDamage);
-            Console.WriteLine($"당신의 체력은 : {player.Stat.Hp}입니다.");
-            Console.WriteLine($"당신의 마력은 : {player.Stat.Mp}입니다.");
+            PlayerDialogues.PlayerStatShow(player);
         }
         break;
     case "3":
         {
             Console.WriteLine("궁수 선택");
             player = new Archer("궁수", initHp, initMp, initStr, initDex, initMagic, initDamage);
-            Console.WriteLine($"당신의 체력은 : {player.Stat.Hp}입니다.");
-            Console.WriteLine($"당신의 마력은 : {player.Stat.Mp}입니다.");
+            PlayerDialogues.PlayerStatShow(player);
         }
         break;
 }
@@ -64,8 +59,8 @@ switch (action)
             var slimeDamage = Util.GetRandom(10);
             Console.WriteLine("사냥하기");
             Monster slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
-            Console.WriteLine($"몬스터 {nameof(slime)}가 나타났습니다!");
-            Console.WriteLine($"{nameof(slime)}의 체력은 {slime.Stat.Hp}입니다.");
+            
+            MonsterDialogue.SpawnMonster(slime);
 
             Stage.BattleSelectDialogue();
 
@@ -126,7 +121,12 @@ switch (secondAction)
         {
             Console.WriteLine("사냥하기");
 
-            var orc = MonsterDialogue.SpawnOrc();
+            var orcHp = Util.GetRandom(10);
+            var orcMp = Util.GetRandom(10);
+            var orcDamage = Util.GetRandom(10);
+            Orc orc = new Orc("오크", orcHp, orcMp, orcDamage);
+            
+            MonsterDialogue.SpawnMonster(orc);
 
             Stage.BattleSelectDialogue();
 
@@ -192,8 +192,8 @@ switch (thirdAction)
             var goblinMp = Util.GetRandom(10);
             var goblinDamage = Util.GetRandom(10);
             Monster goblin = new Goblin("고블린", goblinHp, goblinMp, goblinDamage);
-            Console.WriteLine($"몬스터 {nameof(goblin)}가 나타났습니다!");
-            Console.WriteLine($"{nameof(goblin)}의 체력은 {goblin.Stat.Hp}입니다.");
+            
+            MonsterDialogue.SpawnMonster(goblin);
 
             Stage.BattleSelectDialogue();
 
