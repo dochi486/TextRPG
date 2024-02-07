@@ -57,7 +57,7 @@ switch (action)
             var slimeMp = Util.GetRandom(10);
             var slimeDamage = Util.GetRandom(10);
 
-            Monster slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
+            var slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
             
             MonsterDialogue.SpawnMonster(slime);
 
@@ -119,7 +119,7 @@ switch (secondAction)
             var orcHp = Util.GetRandom(10);
             var orcMp = Util.GetRandom(10);
             var orcDamage = Util.GetRandom(10);
-            Orc orc = new Orc("오크", orcHp, orcMp, orcDamage);
+            var orc = new Orc("오크", orcHp, orcMp, orcDamage);
             
             MonsterDialogue.SpawnMonster(orc);
 
@@ -183,7 +183,7 @@ switch (thirdAction)
             var goblinHp = Util.GetRandom(10);
             var goblinMp = Util.GetRandom(10);
             var goblinDamage = Util.GetRandom(10);
-            Monster goblin = new Goblin("고블린", goblinHp, goblinMp, goblinDamage);
+            var goblin = new Goblin("고블린", goblinHp, goblinMp, goblinDamage);
             
             MonsterDialogue.SpawnMonster(goblin);
 
