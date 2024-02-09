@@ -49,19 +49,13 @@ namespace TextRPG.Stage
         }
 
 
-        public static void MonsterBattleStage1(string action, Player player)
+        public static void MonsterBattle(string action, Player player, Monster monster)
         {
             switch(action)
             {
                 case "1":
                     {
-                        var slimeHp = TextRPG.Util.Util.GetRandom(10);
-                        var slimeMp = TextRPG.Util.Util.GetRandom(10);
-                        var slimeDamage = TextRPG.Util.Util.GetRandom(10);
-
-                        Slime slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
-
-                        MonsterDialogue.SpawnMonster(slime.Name, slime);
+                        MonsterDialogue.SpawnMonster(monster.Name, monster);
 
                         StageDialogue.BattleSelectDialogue();
 
@@ -71,9 +65,9 @@ namespace TextRPG.Stage
                         {
                             case "1":
                                 {
-                                    while(slime.Stat.Hp > 0)
+                                    while(monster.Stat.Hp > 0)
                                     {
-                                        var damage = slime.GetDamage();
+                                        var damage = monster.GetDamage();
                                         player.Attack(damage);
 
                                         if(player.Stat.Hp <= 0)
@@ -83,145 +77,16 @@ namespace TextRPG.Stage
                                         }
 
                                         var playerDamage = player.GetDamage();
-                                        slime.Attack(playerDamage);
-                                        if(slime.Stat.Hp <= 0)
+                                        monster.Attack(playerDamage);
+                                        if(monster.Stat.Hp <= 0)
                                         {
-                                            MonsterDialogue.KilledMonster(slime);
+                                            MonsterDialogue.KilledMonster(monster.Name);
                                             player.Stat.Hp += 10;
                                             PlayerDialogues.PlayerHPIncreased(10);
 
                                             PlayerDialogues.ActionChoose();
                                             break;
                                         }
-                                    }
-                                }
-                                break;
-                            case "2":
-                                {
-                                    PlayerDialogues.PlayerRun();
-                                }
-                                break;
-                        }
-                    }
-                    break;
-                case "2":
-                    {
-                        PlayerDialogues.PlayerRest();
-                    }
-                    break;
-            }
-
-        }
-
-        public static void MonsterBattleStage2(string action, Player player)
-        {
-            switch(action)
-            {
-                case "1":
-                    {
-                        var orcHp = TextRPG.Util.Util.GetRandom(10);
-                        var orcMp = TextRPG.Util.Util.GetRandom(10);
-                        var orcDamage = TextRPG.Util.Util.GetRandom(10);
-                        Orc orc = new Orc("오크", orcHp, orcMp, orcDamage);
-
-                        MonsterDialogue.SpawnMonster(orc.Name, orc);
-
-                        StageDialogue.BattleSelectDialogue();
-
-                        var playerAction = Console.ReadLine();
-
-                        switch(playerAction)
-                        {
-                            case "1":
-                                {
-                                    while(orc.Stat.Hp > 0)
-                                    {
-                                        var damage = orc.GetDamage();
-                                        player.Attack(damage);
-
-                                        if(player.Stat.Hp <= 0)
-                                        {
-                                            PlayerDialogues.PlayerDead();
-                                            break;
-                                        }
-
-                                        var playerDamage = player.GetDamage();
-                                        orc.Attack(playerDamage);
-
-                                        if(orc.Stat.Hp <= 0)
-                                        {
-                                            MonsterDialogue.KilledMonster(orc);
-                                            player.Stat.Hp += 10;
-                                            PlayerDialogues.PlayerHPIncreased(10);
-
-                                            PlayerDialogues.ActionChoose();
-                                            break;
-                                        }
-
-                                    }
-                                }
-                                break;
-                            case "2":
-                                {
-                                    PlayerDialogues.PlayerRun();
-                                }
-                                break;
-                        }
-                    }
-                    break;
-                case "2":
-                    {
-                        PlayerDialogues.PlayerRest();
-                    }
-                    break;
-            }
-        }
-
-        public static void MonsterBattleStage3(string action, Player player)
-        {
-
-            switch(action)
-            {
-                case "1":
-                    {
-                        var goblinHp = TextRPG.Util.Util.GetRandom(10);
-                        var goblinMp = TextRPG.Util.Util.GetRandom(10);
-                        var goblinDamage = TextRPG.Util.Util.GetRandom(10);
-                        Goblin goblin = new Goblin("고블린", goblinHp, goblinMp, goblinDamage);
-
-                        MonsterDialogue.SpawnMonster(goblin.Name, goblin);
-
-                        StageDialogue.BattleSelectDialogue();
-
-                        var playerAction = Console.ReadLine();
-
-                        switch(playerAction)
-                        {
-                            case "1":
-                                {
-                                    while(goblin.Stat.Hp > 0)
-                                    {
-                                        var damage = goblin.GetDamage();
-                                        player.Attack(damage);
-
-                                        if(player.Stat.Hp <= 0)
-                                        {
-                                            PlayerDialogues.PlayerDead();
-                                            break;
-                                        }
-
-                                        var playerDamage = player.GetDamage();
-                                        goblin.Attack(playerDamage);
-                                        if(goblin.Stat.Hp <= 0)
-                                        {
-                                            MonsterDialogue.KilledMonster(goblin);
-                                            player.Stat.Hp += 10;
-                                            PlayerDialogues.PlayerHPIncreased(10);
-
-                                            PlayerDialogues.EndJourney();
-                                            break;
-                                        }
-
                                     }
                                 }
                                 break;
