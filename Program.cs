@@ -17,7 +17,7 @@ var initDex = Util.GetRandom(10);
 var initMagic = Util.GetRandom(10);
 var initDamage = Util.GetRandom(10);
 
-Player player = new Player("플레이어", initHp, initMp, initStr, initDex, initMagic, initDamage);
+Player player;
 
 switch (character)
 {
@@ -42,6 +42,11 @@ switch (character)
             PlayerDialogues.PlayerStatShow(player);
         }
         break;
+    default:
+        {
+            player = new Player("플레이어", initHp, initMp, initStr, initDex, initMagic, initDamage);
+        }
+        break;
 }
 
 
@@ -61,7 +66,7 @@ switch (action)
             
             MonsterDialogue.SpawnMonster(slime);
 
-            Stage.BattleSelectDialogue();
+            StageDialogue.BattleSelectDialogue();
 
             var playerAction = Console.ReadLine();
 
@@ -123,7 +128,7 @@ switch (secondAction)
             
             MonsterDialogue.SpawnMonster(orc);
 
-            Stage.BattleSelectDialogue();
+            StageDialogue.BattleSelectDialogue();
 
             var playerAction = Console.ReadLine();
 
@@ -187,7 +192,7 @@ switch (thirdAction)
             
             MonsterDialogue.SpawnMonster(goblin);
 
-            Stage.BattleSelectDialogue();
+            StageDialogue.BattleSelectDialogue();
 
             var playerAction = Console.ReadLine();
 
