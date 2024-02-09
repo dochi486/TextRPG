@@ -9,111 +9,16 @@ PlayerDialogues.PlayerClassSelect();
 
 var character = Console.ReadLine();
 
+if(character == null)
+    character = default;
 
-var initHp = Util.GetRandom(10);
-var initMp = Util.GetRandom(10);
-var initStr = Util.GetRandom(10);
-var initDex = Util.GetRandom(10);
-var initMagic = Util.GetRandom(10);
-var initDamage = Util.GetRandom(10);
-
-Player player;
-
-switch (character)
-{
-    case "1":
-        {
-            Console.WriteLine("마법사 선택");
-            player = new Wizard("마법사", initHp, initMp, initStr, initDex, initMagic, initDamage);
-            PlayerDialogues.PlayerStatShow(player);
-        }
-        break;
-    case "2":
-        {
-            Console.WriteLine("전사 선택");
-            player = new Warrior("전사", initHp, initMp, initStr, initDex, initMagic, initDamage);
-            PlayerDialogues.PlayerStatShow(player);
-        }
-        break;
-    case "3":
-        {
-            Console.WriteLine("궁수 선택");
-            player = new Archer("궁수", initHp, initMp, initStr, initDex, initMagic, initDamage);
-            PlayerDialogues.PlayerStatShow(player);
-        }
-        break;
-    default:
-        {
-            player = new Player("플레이어", initHp, initMp, initStr, initDex, initMagic, initDamage);
-        }
-        break;
-}
-
+var player = Stage.CreateCharacter(character);
 
 PlayerDialogues.ActionChoose();
 
 var action = Console.ReadLine();
 
-switch (action)
-{
-    case "1":
-        {
-            var slimeHp = Util.GetRandom(10);
-            var slimeMp = Util.GetRandom(10);
-            var slimeDamage = Util.GetRandom(10);
-
-            var slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
-            
-            MonsterDialogue.SpawnMonster(slime);
-
-            StageDialogue.BattleSelectDialogue();
-
-            var playerAction = Console.ReadLine();
-
-            switch (playerAction)
-            {
-                case "1":
-                    {
-                        while (slime.Stat.Hp > 0)
-                        {
-                            var damage = slime.GetDamage();
-                            player.Attack(damage);
-
-                            if (player.Stat.Hp <= 0)
-                            {
-                                PlayerDialogues.PlayerDead();
-                                break;
-                            }
-
-                            var playerDamage = player.GetDamage();
-                            slime.Attack(playerDamage);
-                            if (slime.Stat.Hp <= 0)
-                            {
-                                MonsterDialogue.KilledMonster(slime);
-                                player.Stat.Hp += 10;
-                                PlayerDialogues.PlayerHPIncreased(10);
-
-                                PlayerDialogues.ActionChoose();
-                                break;
-                            }
-                        }
-                    }
-                    break;
-                case "2":
-                    {
-                        PlayerDialogues.PlayerRun();
-                    }
-                    break;
-            }
-        }
-        break;
-    case "2":
-        {
-            PlayerDialogues.PlayerRest();
-        }
-        break;
-}
-
+Stage.MonsterBattle(action, player);
 
 var secondAction = Console.ReadLine();
 
