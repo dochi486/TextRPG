@@ -3,7 +3,7 @@ namespace TextRPG
 {
     public class BattleObject()
     {
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         public struct BattleObjectStat(int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
         {

@@ -61,7 +61,7 @@ namespace TextRPG.Stage
 
                         Slime slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
 
-                        MonsterDialogue.SpawnMonster(slime);
+                        MonsterDialogue.SpawnMonster(slime.Name, slime);
 
                         StageDialogue.BattleSelectDialogue();
 
@@ -124,7 +124,7 @@ namespace TextRPG.Stage
                         var orcDamage = TextRPG.Util.Util.GetRandom(10);
                         Orc orc = new Orc("오크", orcHp, orcMp, orcDamage);
 
-                        MonsterDialogue.SpawnMonster(orc);
+                        MonsterDialogue.SpawnMonster(orc.Name, orc);
 
                         StageDialogue.BattleSelectDialogue();
 
@@ -189,7 +189,7 @@ namespace TextRPG.Stage
                         var goblinDamage = TextRPG.Util.Util.GetRandom(10);
                         Goblin goblin = new Goblin("고블린", goblinHp, goblinMp, goblinDamage);
 
-                        MonsterDialogue.SpawnMonster(goblin);
+                        MonsterDialogue.SpawnMonster(goblin.Name, goblin);
 
                         StageDialogue.BattleSelectDialogue();
 
