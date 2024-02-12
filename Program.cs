@@ -17,6 +17,10 @@ PlayerDialogues.ActionChoose();
 
 var action = Console.ReadLine();
 
+// 1. 몬스터 생성 함수로 빼기
+// 2. while문으로 stage 바꾸기
+// 3. Dictionary나 json으로 스테이지 정보 저장하기? 
+
 var slimeHp = TextRPG.Util.Util.GetRandom(10);
 var slimeMp = TextRPG.Util.Util.GetRandom(10);
 var slimeDamage = TextRPG.Util.Util.GetRandom(10);
