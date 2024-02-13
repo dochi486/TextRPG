@@ -9,12 +9,12 @@ namespace TextRPG.Stage
         {
             Player player;
 
-            var initHp = TextRPG.Util.Util.GetRandom(10);
-            var initMp = TextRPG.Util.Util.GetRandom(10);
-            var initStr = TextRPG.Util.Util.GetRandom(10);
-            var initDex = TextRPG.Util.Util.GetRandom(10);
-            var initMagic = TextRPG.Util.Util.GetRandom(10);
-            var initDamage = TextRPG.Util.Util.GetRandom(10);
+            var initHp = Util.Util.GetRandom(10);
+            var initMp = Util.Util.GetRandom(10);
+            var initStr = Util.Util.GetRandom(10);
+            var initDex = Util.Util.GetRandom(10);
+            var initMagic = Util.Util.GetRandom(10);
+            var initDamage = Util.Util.GetRandom(10);
 
 
             switch(character)
@@ -104,17 +104,6 @@ namespace TextRPG.Stage
                     }
                     break;
             }
-        }
-
-        public static Monster CreateMonster(string name)
-        {
-            var initHp = TextRPG.Util.Util.GetRandom(10);
-            var initMp = TextRPG.Util.Util.GetRandom(10);
-            var initDamage = TextRPG.Util.Util.GetRandom(10);
-
-            Monster monster = new Monster(name, initHp, initMp, initDamage);
-
-            return monster;
         }
     }
 }
