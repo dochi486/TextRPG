@@ -106,13 +106,13 @@ namespace TextRPG.Stage
             }
         }
 
-        public static Monster CreateMonster(string name, Monster monster)
+        public static Monster CreateMonster(string name)
         {
             var initHp = TextRPG.Util.Util.GetRandom(10);
             var initMp = TextRPG.Util.Util.GetRandom(10);
             var initDamage = TextRPG.Util.Util.GetRandom(10);
 
-            monster = new Monster(name, initHp, initMp, initDamage);
+            Monster monster = new Monster(name, initHp, initMp, initDamage);
 
             return monster;
         }

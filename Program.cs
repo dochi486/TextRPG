@@ -4,48 +4,42 @@ using TextRPG;
 using TextRPG.Dialogues.Player;
 using TextRPG.Stage;
 
-PlayerDialogues.PlayerClassSelect();
 
-var character = Console.ReadLine();
+while(true)
+{
+    PlayerDialogues.PlayerClassSelect();
 
-if(character == null)
-    character = default;
+    var character = Console.ReadLine();
 
-var player = Stage.CreateCharacter(character);
+    if(character == null)
+        character = default;
 
-PlayerDialogues.ActionChoose();
+    var player = Stage.CreateCharacter(character);
 
-var action = Console.ReadLine();
+    PlayerDialogues.ActionChoose();
 
-// 1. 몬스터 생성 함수로 빼기
-// 2. while문으로 stage 바꾸기
-// 3. Dictionary나 json으로 스테이지 정보 저장하기? 
+    var action = Console.ReadLine();
 
-var slimeHp = TextRPG.Util.Util.GetRandom(10);
-var slimeMp = TextRPG.Util.Util.GetRandom(10);
-var slimeDamage = TextRPG.Util.Util.GetRandom(10);
+    // 2. while문으로 stage 바꾸기
+    // 3. Dictionary나 json으로 스테이지 정보 저장하기? 
 
-Slime slime = new Slime("슬라임", slimeHp, slimeMp, slimeDamage);
+    Slime slime = (Slime)Stage.CreateMonster("슬라임");
 
-Stage.MonsterBattle(action, player, slime);
+    Stage.MonsterBattle(action, player, slime);
 
-var secondAction = Console.ReadLine();
+    var secondAction = Console.ReadLine();
 
-var orcHp = TextRPG.Util.Util.GetRandom(10);
-var orcMp = TextRPG.Util.Util.GetRandom(10);
-var orcDamage = TextRPG.Util.Util.GetRandom(10);
-Orc orc = new Orc("오크", orcHp, orcMp, orcDamage);
+    Orc orc = (Orc)Stage.CreateMonster("오크");
 
-Stage.MonsterBattle(secondAction, player, orc);
+    Stage.MonsterBattle(secondAction, player, orc);
 
 
-var thirdAction = Console.ReadLine();
+    var thirdAction = Console.ReadLine();
 
-var goblinHp = TextRPG.Util.Util.GetRandom(10);
-var goblinMp = TextRPG.Util.Util.GetRandom(10);
-var goblinDamage = TextRPG.Util.Util.GetRandom(10);
-Goblin goblin = new Goblin("고블린", goblinHp, goblinMp, goblinDamage);
+    Goblin goblin = (Goblin)Stage.CreateMonster("고블린");
 
-Stage.MonsterBattle(thirdAction, player, goblin);
+    Stage.MonsterBattle(thirdAction, player, goblin);
+}
+
 
 
