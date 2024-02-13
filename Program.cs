@@ -20,7 +20,6 @@ while(true)
 
     var action = Console.ReadLine();
 
-    // 2. while문으로 stage 바꾸기
     // 3. Dictionary나 json으로 스테이지 정보 저장하기? 
 
     Slime slime = (Slime)MonsterFactory.CreateMonster(MonsterType.Slime);
@@ -32,7 +31,6 @@ while(true)
     Orc orc = (Orc)MonsterFactory.CreateMonster(MonsterType.Orc);
 
     Stage.MonsterBattle(secondAction, player, orc);
-
 
     var thirdAction = Console.ReadLine();
 

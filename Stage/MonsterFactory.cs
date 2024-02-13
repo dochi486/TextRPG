@@ -21,9 +21,9 @@ namespace TextRPG.Stage
         {
             Monster monster = null;
 
-            var initHp = TextRPG.Util.Util.GetRandom(10);
-            var initMp = TextRPG.Util.Util.GetRandom(10);
-            var initDamage = TextRPG.Util.Util.GetRandom(10);
+            var initHp = Util.Util.GetRandom(10);
+            var initMp = Util.Util.GetRandom(10);
+            var initDamage = Util.Util.GetRandom(10);
 
             switch(monsterType)
             {
