@@ -4,7 +4,8 @@ using TextRPG;
 using TextRPG.Dialogues.Player;
 using TextRPG.Stage;
 
-
+Dictionary<int, StageInfo> stageInfos = new Dictionary<int, StageInfo>();
+    
 while(true)
 {
     PlayerDialogues.PlayerClassSelect();
