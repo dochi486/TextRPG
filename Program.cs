@@ -12,7 +12,8 @@ while(true)
 
     var character = Console.ReadLine();
     
-    Player player = Stage.CreateCharacter(character);
+    Player player = PlayerClassFactory.CreateCharacter(character);
+    PlayerDialogues.PlayerStatShow(player);
 
     PlayerDialogues.ActionChoose();
 

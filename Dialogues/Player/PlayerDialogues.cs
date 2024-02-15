@@ -14,7 +14,8 @@ public static class PlayerDialogues
     {
         if(player == null)
             return;
-        
+
+        Console.WriteLine($"당신의 직업은 : {player.Name}입니다.");
         Console.WriteLine($"당신의 체력은 : {player.Stat.Hp}입니다.");
         Console.WriteLine($"당신의 마력은 : {player.Stat.Mp}입니다.");
     }

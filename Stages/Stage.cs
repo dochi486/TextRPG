@@ -8,51 +8,6 @@ namespace TextRPG.Stages
 {
     public class Stage
     {
-        public static Player CreateCharacter(string character) 
-        {
-            Player player;
-
-            var initHp = Util.GetRandom(10);
-            var initMp = Util.GetRandom(10);
-            var initStr = Util.GetRandom(10);
-            var initDex = Util.GetRandom(10);
-            var initMagic = Util.GetRandom(10);
-            var initDamage = Util.GetRandom(10);
-
-
-            switch(character)
-            {
-                case "1":
-                    {
-                        Console.WriteLine("마법사 선택");
-                        player = new Wizard("마법사", initHp, initMp, initStr, initDex, initMagic, initDamage);
-                        PlayerDialogues.PlayerStatShow(player);
-                        return player;
-                    }
-                case "2":
-                    {
-                        Console.WriteLine("전사 선택");
-                        player = new Warrior("전사", initHp, initMp, initStr, initDex, initMagic, initDamage);
-                        PlayerDialogues.PlayerStatShow(player);
-                        return player;
-                    }
-                case "3":
-                    {
-                        Console.WriteLine("궁수 선택");
-                        player = new Archer("궁수", initHp, initMp, initStr, initDex, initMagic, initDamage);
-                        PlayerDialogues.PlayerStatShow(player);
-                        return player;
-                    }
-                default:
-                    {
-                        player = new Player("플레이어", initHp, initMp, initStr, initDex, initMagic, initDamage);
-                        PlayerDialogues.PlayerStatShow(player);
-                        return player;
-                    }
-            }
-        }
-
-
         public static void MonsterBattle(string action, Player player, Monster monster)
         {
             switch(action)
