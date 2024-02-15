@@ -1,4 +1,4 @@
-﻿namespace TextRPG
+﻿namespace TextRPG.BattleObjects.Player
 {
     public class Player : BattleObject
     {

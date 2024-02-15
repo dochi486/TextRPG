@@ -1,4 +1,5 @@
-﻿using TextRPG.Utils;
+﻿using TextRPG.BattleObjects.Monster;
+using TextRPG.Utils;
 
 namespace TextRPG.Factories
 {

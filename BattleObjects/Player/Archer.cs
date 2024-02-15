@@ -1,4 +1,4 @@
-﻿using TextRPG;
+﻿namespace TextRPG.BattleObjects.Player;
 
 public class Archer(string name, int initHp, int initMp, int initStr, int initDex, int initMagic, int initDamage)
     : Player(name, initHp, initMp, initStr, initDex, initMagic, initDamage)

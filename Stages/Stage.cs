@@ -1,4 +1,5 @@
-﻿using TextRPG.Dialogues.Monster;
+﻿using TextRPG.BattleObjects.Player;
+using TextRPG.Dialogues.Monster;
 using TextRPG.Dialogues.Player;
 using TextRPG.Dialogues.Stage;
 using TextRPG.Utils;

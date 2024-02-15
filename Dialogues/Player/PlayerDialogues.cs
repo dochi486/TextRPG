@@ -10,7 +10,7 @@ public static class PlayerDialogues
         Console.WriteLine("3. 궁수");
     }
 
-    public static void PlayerStatShow(TextRPG.Player player)
+    public static void PlayerStatShow(BattleObjects.Player.Player player)
     {
         if(player == null)
             return;

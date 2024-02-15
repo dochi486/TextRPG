@@ -1,5 +1,5 @@
 ﻿
-namespace TextRPG
+namespace TextRPG.BattleObjects
 {
     public class BattleObject()
     {

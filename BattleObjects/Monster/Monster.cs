@@ -1,4 +1,6 @@
 ﻿
+using TextRPG.BattleObjects;
+
 namespace TextRPG
 {
     public class Monster : BattleObject

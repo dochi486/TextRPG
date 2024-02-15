@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using TextRPG;
+using TextRPG.BattleObjects.Player;
 using TextRPG.Dialogues.Player;
 using TextRPG.Factories;
 using TextRPG.Stages;
