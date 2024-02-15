@@ -9,11 +9,8 @@ while(true)
     PlayerDialogues.PlayerClassSelect();
 
     var character = Console.ReadLine();
-
-    if(character == null)
-        character = default;
-
-    var player = Stage.CreateCharacter(character);
+    
+    Player player = Stage.CreateCharacter(character);
 
     PlayerDialogues.ActionChoose();
 

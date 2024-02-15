@@ -1,4 +1,5 @@
 ﻿
+using System.Linq.Expressions;
 using TextRPG.Dialogues.Player;
 
 namespace TextRPG.Stage
@@ -43,6 +44,7 @@ namespace TextRPG.Stage
                 default:
                     {
                         player = new Player("플레이어", initHp, initMp, initStr, initDex, initMagic, initDamage);
+                        PlayerDialogues.PlayerStatShow(player);
                         return player;
                     }
             }
@@ -103,6 +105,11 @@ namespace TextRPG.Stage
                         PlayerDialogues.PlayerRest();
                     }
                     break;
+                default:
+                {
+                    Console.WriteLine("잘못된 선택입니다.");
+                } 
+                break;
             }
         }
     }
