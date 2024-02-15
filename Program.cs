@@ -35,23 +35,12 @@ while(true)
 
     var action = Console.ReadLine();
 
-    // 3. Dictionary나 json으로 스테이지 정보 저장하기? 
+    for (int i = 1; i <= stageInfos.Count; i++)
+    { 
+        var monster = MonsterFactory.CreateMonster(stageInfos[i].MonsterType);
+        Stage.MonsterBattle(action, player, monster);
+    }
 
-    Slime slime = (Slime)MonsterFactory.CreateMonster(MonsterType.Slime);
-
-    Stage.MonsterBattle(action, player, slime);
-
-    var secondAction = Console.ReadLine();
-
-    Orc orc = (Orc)MonsterFactory.CreateMonster(MonsterType.Orc);
-
-    Stage.MonsterBattle(secondAction, player, orc);
-
-    var thirdAction = Console.ReadLine();
-
-    Goblin goblin = (Goblin)MonsterFactory.CreateMonster(MonsterType.Goblin);
-
-    Stage.MonsterBattle(thirdAction, player, goblin);
 }
 
 
