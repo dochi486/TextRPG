@@ -1,7 +1,7 @@
 ﻿
-namespace TextRPG.Stage
+namespace TextRPG.Dialogues.Stage
 {
-    internal class StageDialogue
+    internal static class StageDialogue
     {
         public static void BattleSelectDialogue()
         {

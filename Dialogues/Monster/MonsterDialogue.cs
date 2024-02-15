@@ -1,8 +1,8 @@
-﻿namespace TextRPG;
+﻿namespace TextRPG.Dialogues.Monster;
 
-public class MonsterDialogue
+public static class MonsterDialogue
 {
-    public static void SpawnMonster(string name, Monster monster)
+    public static void SpawnMonster(string name, TextRPG.Monster monster)
     {
         if(monster == null)
             return;

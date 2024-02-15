@@ -1,4 +1,4 @@
-﻿namespace TextRPG.Util;
+﻿namespace TextRPG.Utils;
 
 public static class Util
 {

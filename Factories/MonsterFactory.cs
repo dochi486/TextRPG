@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TextRPG.Utils;
 
-namespace TextRPG.Stage
+namespace TextRPG.Factories
 {
     public enum EMonsterType
     {
@@ -14,16 +10,16 @@ namespace TextRPG.Stage
         Goblin
     }
 
-    public class MonsterFactory
+    public static class MonsterFactory
     {
 
         public static Monster CreateMonster(EMonsterType eMonsterType)
         {
             Monster monster = null;
 
-            var initHp = Util.Util.GetRandom(10);
-            var initMp = Util.Util.GetRandom(10);
-            var initDamage = Util.Util.GetRandom(10);
+            var initHp = Util.GetRandom(10);
+            var initMp = Util.GetRandom(10);
+            var initDamage = Util.GetRandom(10);
 
             switch(eMonsterType)
             {

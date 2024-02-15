@@ -1,6 +1,6 @@
 ﻿namespace TextRPG.Dialogues.Player;
 
-public class PlayerDialogues
+public static class PlayerDialogues
 {
     public static void PlayerClassSelect()
     {

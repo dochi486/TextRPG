@@ -1,8 +1,9 @@
-﻿
-using System.Linq.Expressions;
+﻿using TextRPG.Dialogues.Monster;
 using TextRPG.Dialogues.Player;
+using TextRPG.Dialogues.Stage;
+using TextRPG.Utils;
 
-namespace TextRPG.Stage
+namespace TextRPG.Stages
 {
     public class Stage
     {
@@ -10,12 +11,12 @@ namespace TextRPG.Stage
         {
             Player player;
 
-            var initHp = Util.Util.GetRandom(10);
-            var initMp = Util.Util.GetRandom(10);
-            var initStr = Util.Util.GetRandom(10);
-            var initDex = Util.Util.GetRandom(10);
-            var initMagic = Util.Util.GetRandom(10);
-            var initDamage = Util.Util.GetRandom(10);
+            var initHp = Util.GetRandom(10);
+            var initMp = Util.GetRandom(10);
+            var initStr = Util.GetRandom(10);
+            var initDex = Util.GetRandom(10);
+            var initMagic = Util.GetRandom(10);
+            var initDamage = Util.GetRandom(10);
 
 
             switch(character)

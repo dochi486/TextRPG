@@ -2,7 +2,8 @@
 
 using TextRPG;
 using TextRPG.Dialogues.Player;
-using TextRPG.Stage;
+using TextRPG.Factories;
+using TextRPG.Stages;
 
 while(true)
 {
@@ -15,12 +16,10 @@ while(true)
     PlayerDialogues.ActionChoose();
 
     var action = Console.ReadLine();
-
-    StageInfo stageInfo = new StageInfo();
     
-    for (int i = 1; i <= stageInfo.StageDictionary.Count; i++)
+    for (int i = 1; i <= StageInfo.StageDictionary.Count; i++)
     { 
-        Monster monster = MonsterFactory.CreateMonster(stageInfo.StageDictionary[i].EMonsterType);
+        Monster monster = MonsterFactory.CreateMonster(StageInfo.StageDictionary[i]);
         Stage.MonsterBattle(action, player, monster);
     }
 }
