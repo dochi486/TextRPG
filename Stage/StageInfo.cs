@@ -2,7 +2,10 @@
 
 public class StageInfo
 {
-    public MonsterType MonsterType;
-    public int MonsterLevel;
-    
+    public Dictionary<int, MonsterInfo> StageDictionary = new Dictionary<int, MonsterInfo>()
+    {
+        {1, new MonsterInfo() {EMonsterType = EMonsterType.Slime}},
+        {2, new MonsterInfo() {EMonsterType = EMonsterType.Orc}},
+        {3, new MonsterInfo() {EMonsterType = EMonsterType.Goblin}}
+    };
 }
