@@ -49,6 +49,9 @@ namespace TextRPG.Stages
                     PlayerDialogues.PlayerRun();
                 }
                     break;
+                default:
+                    Console.WriteLine("잘못된 선택입니다.");
+                    break;
             }
         }
 
