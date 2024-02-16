@@ -11,16 +11,20 @@ namespace TextRPG.Stages
 
         public static void BattleSelect(string action, Player player, Monster monster)
         {
+            
             switch (action)
             {
                 case "1":
                 {
-                    Battle(player, monster);
+                    MonsterDialogue.SpawnMonster(monster.Name, monster);
+                    StageDialogue.BattleSelectDialogue();
+                    var attack = Console.ReadLine();
+                    Battle(attack, player, monster);
                 }
                 break;
                 case "2":
                 {
-                    PlayerDialogues.PlayerRun();
+                    PlayerDialogues.PlayerRest();
                 }
                 break;
                 default:
@@ -31,13 +35,42 @@ namespace TextRPG.Stages
             }
         }
         
-        private static void Battle(Player player, Monster monster)
+        private static void Battle(string attack, Player player, Monster monster)
+        {
+            switch (attack)
+            {
+                case "1":
+                {
+                    Attack(player, monster);
+                } 
+                break;
+                case "2":
+                {
+                    PlayerDialogues.PlayerRun();
+                }
+                break;
+                default:
+                {
+                    Console.WriteLine("잘못된 선택입니다.");
+                }
+                break;
+            }
+
+        }
+
+        private static void Attack(Player player, Monster monster)
         {
             while (IsMonsterAlive(monster) || IsPlayerAlive(player))
             {
                 PlayerAttack(player, monster);
                 MonsterAttack(player, monster);
             }
+            
+            if(false == IsPlayerAlive(player))
+                PlayerDialogues.PlayerDead();
+            
+            if(false == IsMonsterAlive(monster))
+                MonsterDialogue.KilledMonster(monster.Name);
         }
 
         private static bool IsPlayerAlive(Player player) => player.Stat.Hp > 0;

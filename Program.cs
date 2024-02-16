@@ -3,6 +3,7 @@
 using TextRPG;
 using TextRPG.BattleObjects.Player;
 using TextRPG.Dialogues.Player;
+using TextRPG.Dialogues.Stage;
 using TextRPG.Factories;
 using TextRPG.Stages;
 
