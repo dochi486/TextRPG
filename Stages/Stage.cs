@@ -41,29 +41,7 @@ namespace TextRPG.Stages
             {
                 case "1":
                 {
-                    while(monster.Stat.Hp > 0)
-                    {
-                        var damage = monster.GetDamage();
-                        player.Attack(damage);
-
-                        if(player.Stat.Hp <= 0)
-                        {
-                            PlayerDialogues.PlayerDead();
-                            break;
-                        }
-
-                        var playerDamage = player.GetDamage();
-                        monster.Attack(playerDamage);
-                        if(monster.Stat.Hp <= 0)
-                        {
-                            MonsterDialogue.KilledMonster(monster.Name);
-                            player.Stat.Hp += 10;
-                            PlayerDialogues.PlayerHPIncreased(10);
-
-                            PlayerDialogues.ActionChoose();
-                            break;
-                        }
-                    }
+                    Attack(player, monster);
                 }
                     break;
                 case "2":
@@ -71,6 +49,33 @@ namespace TextRPG.Stages
                     PlayerDialogues.PlayerRun();
                 }
                     break;
+            }
+        }
+
+        private static void Attack(Player player, Monster monster)
+        {
+            while(monster.Stat.Hp > 0)
+            {
+                var damage = monster.GetDamage();
+                player.Attack(damage);
+
+                if(player.Stat.Hp <= 0)
+                {
+                    PlayerDialogues.PlayerDead();
+                    break;
+                }
+
+                var playerDamage = player.GetDamage();
+                monster.Attack(playerDamage);
+                if(monster.Stat.Hp <= 0)
+                {
+                    MonsterDialogue.KilledMonster(monster.Name);
+                    player.Stat.Hp += 10;
+                    PlayerDialogues.PlayerHPIncreased(10);
+
+                    PlayerDialogues.ActionChoose();
+                    break;
+                }
             }
         }
     }
