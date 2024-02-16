@@ -24,7 +24,7 @@ namespace TextRPG.BattleObjects
             Stat = stat;
         }
 
-        public void Attack(int damage)
+        public void Attacked(int damage)
         {
             BattleObjectStat modifiedStat = Stat;
             modifiedStat.Hp -= damage;

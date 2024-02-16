@@ -22,7 +22,7 @@ while(true)
     for (int i = 1; i <= StageInfo.StageDictionary.Count; i++)
     { 
         Monster monster = MonsterFactory.CreateMonster(StageInfo.StageDictionary[i]);
-        Stage.MonsterBattle(action, player, monster);
+        Stage.BattleSelect(action, player, monster);
     }
 }
 
