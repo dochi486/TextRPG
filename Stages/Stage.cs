@@ -19,8 +19,7 @@ namespace TextRPG.Stages
                 {
                     MonsterDialogue.SpawnMonster(monster.Name, monster);
                     StageDialogue.BattleSelectDialogue();
-                    var attack = Console.ReadLine();
-                    Battle(attack, player, monster);
+                    Battle(player, monster);
                 }
                 break;
                 case "2":
@@ -36,8 +35,10 @@ namespace TextRPG.Stages
             }
         }
         
-        private static void Battle(string attack, Player player, Monster monster)
+        private static void Battle(Player player, Monster monster)
         {
+            var attack = Console.ReadLine();
+
             switch (attack)
             {
                 case "1":
