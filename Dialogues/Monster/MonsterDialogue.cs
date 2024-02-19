@@ -11,6 +11,11 @@ public static class MonsterDialogue
         Console.WriteLine($"{name}의 체력은 {monster.Stat.Hp}입니다.");
     }
 
+    public static void AttackPlayer(int damage)
+    {
+        Console.WriteLine($"플레이어에게 {damage}만큼의 데미지를 주었습니다.");
+    }
+
     public static void KilledMonster(string name)
     {
         Console.WriteLine($"{name}을 처치하고 경험치를 얻었습니다.");

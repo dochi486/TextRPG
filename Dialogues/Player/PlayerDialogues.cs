@@ -33,6 +33,11 @@ public static class PlayerDialogues
         Console.WriteLine("The End");
     }
 
+    public static void PlayerAttack(int damage)
+    {
+        Console.WriteLine($"몬스터에게 {damage}만큼의 데미지를 주었습니다.");
+    }
+
     public static void PlayerDead()
     {
         Console.WriteLine("플레이어 사망");

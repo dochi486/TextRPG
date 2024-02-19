@@ -62,17 +62,25 @@ namespace TextRPG.Stages
 
         private static void Attack(Player player, Monster monster)
         {
-            while (IsMonsterAlive(monster) || IsPlayerAlive(player))
+            while (IsMonsterAlive(monster))
             {
                 PlayerAttack(player, monster);
                 MonsterAttack(player, monster);
+
+
+                if (false == IsPlayerAlive(player))
+                {
+                    PlayerDialogues.PlayerDead();
+                    break;
+                }
+
+                if (false == IsMonsterAlive(monster))
+                {
+                    MonsterDialogue.KilledMonster(monster.Name);
+                    break;
+                }
+                
             }
-            
-            if(false == IsPlayerAlive(player))
-                PlayerDialogues.PlayerDead();
-            
-            if(false == IsMonsterAlive(monster))
-                MonsterDialogue.KilledMonster(monster.Name);
         }
 
         private static bool IsPlayerAlive(Player player) => player.Stat.Hp > 0;
@@ -82,12 +90,14 @@ namespace TextRPG.Stages
         {
             var damage = monster.GetDamage();
             player.Attacked(damage);
+            MonsterDialogue.AttackPlayer(damage);
         }
 
         private static void PlayerAttack(Player player, Monster monster)
         {
             var damage = player.GetDamage();
             monster.Attacked(damage);
+            PlayerDialogues.PlayerAttack(damage);
         }
         
     }
