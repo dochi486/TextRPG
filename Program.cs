@@ -11,19 +11,16 @@ while(true)
 {
     PlayerDialogues.PlayerClassSelect();
 
-    var character = Console.ReadLine();
-    
-    Player player = PlayerClassFactory.CreateCharacter(character);
+    Player player = PlayerClassFactory.CreateCharacter();
     PlayerDialogues.PlayerStatShow(player);
 
     PlayerDialogues.ActionChoose();
 
-    var action = Console.ReadLine();
     
     for (int i = 1; i <= StageInfo.StageDictionary.Count; i++)
     { 
         Monster monster = MonsterFactory.CreateMonster(StageInfo.StageDictionary[i]);
-        Stage.BattleSelect(action, player, monster);
+        Stage.BattleSelect(player, monster);
     }
 }
 

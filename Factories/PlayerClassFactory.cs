@@ -6,8 +6,10 @@ namespace TextRPG.Factories;
 
 public static class PlayerClassFactory
 {
-    public static Player CreateCharacter(string character) 
+    public static Player CreateCharacter()
     {
+        var character = Console.ReadLine();
+        
         Player player = null;
 
         var initHp = Util.GetRandom(10);

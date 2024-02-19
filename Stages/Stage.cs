@@ -9,9 +9,10 @@ namespace TextRPG.Stages
     {
         // 몬스터와 플레이어 전투 
 
-        public static void BattleSelect(string action, Player player, Monster monster)
+        public static void BattleSelect(Player player, Monster monster)
         {
-            
+            var action = Console.ReadLine();
+
             switch (action)
             {
                 case "1":
