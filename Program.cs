@@ -14,11 +14,11 @@ while(true)
     Player player = PlayerClassFactory.CreateCharacter();
     PlayerDialogues.PlayerStatShow(player);
 
-    PlayerDialogues.ActionChoose();
 
     
     for (int i = 1; i <= StageInfo.StageDictionary.Count; i++)
     { 
+        PlayerDialogues.ActionChoose();
         Monster monster = MonsterFactory.CreateMonster(StageInfo.StageDictionary[i]);
         Stage.BattleSelect(player, monster);
     }

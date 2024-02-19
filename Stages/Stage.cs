@@ -76,7 +76,10 @@ namespace TextRPG.Stages
 
                 if (false == IsMonsterAlive(monster))
                 {
-                    MonsterDialogue.KilledMonster(monster.Name);
+                    if(monster.Name is "Goblin")
+                        PlayerDialogues.EndJourney();
+                    else
+                        MonsterDialogue.KilledMonster(monster.Name);
                     break;
                 }
                 
